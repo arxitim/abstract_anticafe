@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+}
+
+.header {
+    background-color: darkgrey;
+    height: 80px;
+    text-align: center;
+}
+
+.content {
+    background-color: gray;
+    height: 800px;
+    text-align: center;
+}
+
+.footer {
+    background-color: dimgray;
+    height: 180px;
+    text-align: center;
+}

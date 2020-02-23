@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Главная страница{% endblock %}
+
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/index.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="header">Верхняя панель</div>
+    <div class="content">Собственно, контент</div>
+    <div class="footer">Подвал</div>
+{% endblock %}
