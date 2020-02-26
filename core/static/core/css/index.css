@@ -5,17 +5,41 @@ body {
 .header {
     background-color: darkgrey;
     height: 80px;
+    font-size: 30px;
     text-align: center;
+    line-height: 80px;
 }
 
 .content {
     background-color: gray;
     height: 800px;
     text-align: center;
+    font-size: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.tables {
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.table {
+    width: 350px;
+    height: 350px;
+    line-height: 350px;
+    background-color: black;
+    color: white;
+    font-size: 80px;
+    margin: 10px;
 }
 
 .footer {
+    font-size: 50px;
     background-color: dimgray;
     height: 180px;
     text-align: center;
+    line-height: 180px;
 }
