@@ -6,27 +6,39 @@
 {% block styles %}
     <link rel="stylesheet" type="text/css" href="{% static 'core/css/index.css' %}">
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'core/img/favicon.ico' %}">
+    <link rel="stylesheet" href="https://unpkg.com/flexboxgrid2@7.2.1/flexboxgrid2.css">
 {% endblock %}
 
 
 {% block content %} 
 <div class="header">Верхняя панель</div>
 
-<div class="content">Столики
-    <div class="tables">
-        <div class="table">1</div>
-        <div class="table">2</div>
-        <div class="table">3</div>
-        <div class="table">4</div>
-        <div class="table">5</div>
-        <div class="table">6</div>
-        <div class="table">7</div>
-        <div class="table">8</div>
-        <div class="table">9</div>
-        <div class="table">10</div>
+<!--Параша с флексбокс-гридом2-->
+<!--https://evgenyrodionov.github.io/flexboxgrid2/-->
+<div class="container content">
+    <div class="row">
+        <div class="col-xs-6 col-md-4 col-lg-3">
+            <div class="block">1</div>
+        </div>
+        <div class="col-xs-6 col-md-4 col-lg-3">
+            <div class="block">2</div>
+        </div>
+        <div class="col-xs-6 col-md-4 col-lg-3">
+            <div class="block">3</div>
+        </div>
+        <div class="col-xs-6 col-md-4 col-lg-3">
+            <div class="block">4</div>
+        </div>
+        <div class="col-xs-6 col-md-4 col-lg-3">
+            <div class="block">5</div>
+        </div>
+        <div class="col-xs-6 col-md-4 col-lg-3">
+            <div class="block">6</div>
+        </div>
     </div>
-
 </div>
+<!--Конец параши-->
+
 
 <div class="footer">Подвал</div>
 {% endblock %}
