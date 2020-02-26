@@ -42,4 +42,10 @@ body {
     color: aliceblue;
 }
 
+.wrong_url {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /*не люблю фронт'енд*/

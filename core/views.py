@@ -10,4 +10,4 @@ class HomePage(View):
 
 class PageNotFound(View):
     def get(self, request):
-        return HttpResponse("Whoops, page not found")
+        return render(request, 'core/not_found.html', context={})
