@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Главная страница{% endblock %}
 
+{% block title %}
+    Главная страница
+{% endblock %}
 
 {% block styles %}
     <link rel="stylesheet" type="text/css" href="{% static 'core/css/index.css' %}">
@@ -9,10 +11,11 @@
     <link rel="stylesheet" href="https://unpkg.com/flexboxgrid2@7.2.1/flexboxgrid2.css">
 {% endblock %}
 
+{% block header %}
+    {% include "core/header.html" %}
+{% endblock %}
 
-{% block content %} 
-<div class="header">Верхняя панель</div>
-
+{% block content %}
 <!--Параша с флексбокс-гридом2-->
 <!--https://evgenyrodionov.github.io/flexboxgrid2/-->
 <div class="container content">
@@ -38,7 +41,9 @@
     </div>
 </div>
 <!--Конец параши-->
-
-
-<div class="footer">Подвал</div>
 {% endblock %}
+
+{% block footer %}
+    {% include "core/footer.html" %}
+{% endblock %}
+
