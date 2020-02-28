@@ -1,30 +1,34 @@
-body {
+html, body {
     margin: 0;
+    height: 100%;
     background-color: #3f3f3f;
 }
 
 .header {
-    background-color: #262626;
-    width: 100%;
+    margin-bottom: 50px;
     height: 80px;
     font-size: 30px;
-    color: aliceblue;
     line-height: 80px;
-    margin-bottom: 50px;
-    margin-right: -20px;
+    background-color: #262626;
+    color: aliceblue;
+}
+
+.content {
+    min-height: 100%;
+    padding-bottom: 140px;
 }
 
 /*По-моему здесь слишком много всего o_0 */
 .block {
-    height: 216px;
     margin: 8px 0;
+    height: 216px;
     padding: 32px;
-    background-color: #353535;
-    color: aliceblue;
     line-height: 216px;
     font-size: 48px;
     text-align: center;
     user-select: none;
+    background-color: #353535;
+    color: aliceblue;
 }
 
 .block:hover {
@@ -32,14 +36,12 @@ body {
 }
 
 .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    font-size: 90px;
-    background-color: #232323;
+    margin-top: -140px;
     height: 140px;
+    font-size: 90px;
     text-align: center;
     line-height: 140px;
+    background-color: #232323;
     color: aliceblue;
 }
 
