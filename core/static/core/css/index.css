@@ -24,6 +24,7 @@ body {
     line-height: 216px;
     font-size: 48px;
     text-align: center;
+    user-select: none;
 }
 
 .block:hover {
