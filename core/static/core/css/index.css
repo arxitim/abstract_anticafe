@@ -38,10 +38,13 @@ html, body {
     user-select: none;
     background-color: #353535;
     color: aliceblue;
+    transition: 0.3s;
 }
 
 .block:hover {
-    background-color: #848484;
+    background-color: #4c4c4c;
+    transition: 0.4s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
 
 .footer {
