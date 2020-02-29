@@ -6,9 +6,13 @@
     {% block styles %}{% endblock %}
 </head>
 <body>
-    {% block header %}{% endblock %}
-    {% block content %}{% endblock %}
-    {% block footer %}{% endblock %}
+    <div class="wrapper">
+        {% block header %}{% endblock %}
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+        {% block footer %}{% endblock %}
+    </div>
     {% block scripts %}{% endblock %}
 </body>
 </html>

@@ -13,9 +13,15 @@ html, body {
     color: aliceblue;
 }
 
+.wrapper {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
 .content {
-    min-height: 100%;
-    padding-bottom: 140px;
+    display: table-row;
+    height: 100%;
 }
 
 .table {
@@ -25,9 +31,8 @@ html, body {
 /*По-моему здесь слишком много всего o_0 */
 .block {
     margin: 8px 0;
-    height: 216px;
-    padding: 32px;
-    line-height: 216px;
+    height: 240px;
+    line-height: 240px;
     font-size: 48px;
     text-align: center;
     user-select: none;
@@ -40,7 +45,6 @@ html, body {
 }
 
 .footer {
-    margin-top: -140px;
     height: 140px;
     font-size: 90px;
     text-align: center;
