@@ -7,7 +7,9 @@
 </head>
 <body>
     {% block header %}{% endblock %}
-    {% block content %}{% endblock %}
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
     {% block footer %}{% endblock %}
     {% block scripts %}{% endblock %}
 </body>

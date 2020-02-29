@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Стол {{ table_id }}
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/index.css' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'core/img/favicon.ico' %}">
+{% endblock %}
+
+{% block header %}
+    {% include "core/header.html" %}
+{% endblock %}
+
+{% block content %}
+
+    <p>Поздравляю, вы выбрали стол номер {{ table_id }}</p>
+
+{% endblock %}
+
+{% block footer %}
+    {% include "core/footer.html" %}
+{% endblock %}

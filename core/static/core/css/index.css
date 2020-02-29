@@ -18,6 +18,10 @@ html, body {
     padding-bottom: 140px;
 }
 
+.table {
+    text-decoration: none;
+}
+
 /*По-моему здесь слишком много всего o_0 */
 .block {
     margin: 8px 0;

@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
-from core.views import HomePage, PageNotFound
+from core.views import HomePage, PageNotFound, Table
 
 urlpatterns = [
     path('', HomePage.as_view()),
     path('admin/', admin.site.urls),
+    path('tables/<int:table_id>', Table.as_view()),
     re_path(r'.*', PageNotFound.as_view()),
 ]
