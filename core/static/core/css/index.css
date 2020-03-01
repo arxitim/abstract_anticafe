@@ -13,6 +13,16 @@ html, body {
     color: aliceblue;
 }
 
+.home_page {
+    text-decoration: none;
+}
+
+.main_logo {
+    margin-left: 30px;
+    vertical-align: middle;
+    height: 50px;
+}
+
 .wrapper {
     display: table;
     height: 100%;
