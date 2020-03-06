@@ -4,7 +4,9 @@ html, body {
     background-color: #3f3f3f;
 }
 
-.header {
+header {
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 50px;
     height: 80px;
     font-size: 30px;
@@ -13,8 +15,24 @@ html, body {
     color: aliceblue;
 }
 
-.home_page {
+a {
+    color: aliceblue;
     text-decoration: none;
+}
+
+.loginout_button {
+    margin-left: 20px;
+}
+
+.login_page_form {
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+}
+
+.login_block {
+    display:flex;
+    margin-right: 40px;
 }
 
 .main_logo {
