@@ -1,13 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from django.views import View
-
-from core.models import User
 
 
 class HomePage(View):
     def get(self, request):
-        user = User.objects.create()
         tables = [1, 2,
                   3, 4,
                   5, 6]
@@ -16,7 +12,6 @@ class HomePage(View):
 
 class Table(View):
     def get(self, request, table_id):
-        print(User.objects.all())
         return render(request, 'core/table.html', context={'table_id': table_id})
 
 
