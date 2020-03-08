@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Регистрация
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/index.css' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'core/img/favicon.ico' %}">
+{% endblock %}
+
+{% block header %}
+    {% include "core/header_login.html" %}
+{% endblock %}
+
+{% block content %}
+    <div class="register_page_form">
+        <form action="" method="post">{% csrf_token %}
+            {{ form.as_p }}
+        <input type="submit" value="Зарегистрировать">
+    </form>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {% include "core/footer.html" %}
+{% endblock %}

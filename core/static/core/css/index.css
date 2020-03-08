@@ -30,6 +30,12 @@ a {
     width: 20%;
 }
 
+.register_page_form {
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+
 .login_block {
     display:flex;
     margin-right: 40px;
