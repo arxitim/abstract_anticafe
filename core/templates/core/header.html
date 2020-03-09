@@ -7,7 +7,7 @@
 
     <div class="login_block">
         {% if user.is_authenticated %}
-            {{ user.get_username }}
+            {{ user.username }}
             <form class="loginout_button" action="{% url 'logout' %}?next={{ request.path }}">
                 <button>Logout</button>
             </form>

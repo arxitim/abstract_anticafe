@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
-from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import FormView
-from django.urls import reverse_lazy
+from django.contrib.auth import login, authenticate
+
+from core.forms import RegistrationForm
 
 
 class HomePage(View):
@@ -19,22 +20,27 @@ class Table(View):
 
 
 class MyRegisterFormView(FormView):
-    # Указажем какую форму мы будем использовать для регистрации наших пользователей, в нашем случае
-    # это UserCreationForm - стандартный класс Django унаследованный
-    form_class = UserCreationForm
-
-    # Ссылка, на которую будет перенаправляться пользователь в случае успешной регистрации.
-    success_url = reverse_lazy('homePage')
-
-    # Шаблон, который будет использоваться при отображении представления.
     template_name = "registration/register.html"
 
-    def form_valid(self, form):
-        form.save()
-        return super(MyRegisterFormView, self).form_valid(form)
+    def post(self, request, *args, **kwargs):
+        context = {}
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            email = form.cleaned_data.get('email')
+            raw_password = form.cleaned_data.get('password1')
+            account = authenticate(email=email, password=raw_password)
+            login(request, account)
+            return redirect('homePage')
+        else:
+            context['form'] = form
+        return render(request, self.template_name, context)
 
-    def form_invalid(self, form):
-        return super(MyRegisterFormView, self).form_invalid(form)
+    def get(self, request, *args, **kwargs):
+        context = {}
+        form = RegistrationForm()
+        context['form'] = form
+        return render(request, self.template_name, context)
 
 
 class PageNotFound(View):
