@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import View
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import FormView
+from django.urls import reverse_lazy
 
 
 class HomePage(View):
@@ -23,8 +24,7 @@ class MyRegisterFormView(FormView):
     form_class = UserCreationForm
 
     # Ссылка, на которую будет перенаправляться пользователь в случае успешной регистрации.
-    # В данном случае указана ссылка на страницу входа для зарегистрированных пользователей.
-    success_url = "../../"
+    success_url = reverse_lazy('homePage')
 
     # Шаблон, который будет использоваться при отображении представления.
     template_name = "registration/register.html"
