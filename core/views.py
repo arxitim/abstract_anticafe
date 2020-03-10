@@ -17,7 +17,7 @@ class HomePage(View):
 
 
 class Table(View):
-    template_name = 'core.table.html'
+    template_name = 'core/table.html'
 
     def get(self, request, table_id):
         return render(request, self.template_name, context={'table_id': table_id})
