@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Мой аккаунт
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/index.css' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'core/img/favicon.ico' %}">
+{% endblock %}
+
+{% block header %}
+    {% include "core/header.html" %}
+{% endblock %}
+
+{% block content %}
+    <div class="account_page_form">
+
+        <form method="post" action="{% url 'account' %}">
+            {% csrf_token %}
+            {% for field in account_form %}
+                <p>
+                    {{ field.label_tag }}
+                    {{ field }}
+
+                    {% if field.help_text %}
+                        <small>{{ field.help_text }}</small>
+                    {% endif %}
+
+                </p>
+            {% endfor %}
+
+            {% for field in account_form %}
+                {% for error in field.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endfor %}
+
+            {% if account_form.non_field_errors %}
+                <p>{{ account_form.non_field_errors }}</p>
+            {% endif %}
+
+            <input type="submit" value="Save changes" />
+            <input type="hidden" name="next" value="{{ next }}" />
+        </form>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {% include "core/footer.html" %}
+{% endblock %}
