@@ -12,7 +12,9 @@ class HomePage(View):
     def get(self, request):
         tables = [1, 2,
                   3, 4,
-                  5, 6]
+                  5, 6,
+                  7, 8,
+                  ]
         return render(request, self.template_name, context={'tables': tables})
 
 
