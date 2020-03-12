@@ -17,7 +17,7 @@
 {% block content %}
     <div class="account_page_form">
 
-        <form method="post" action="{% url 'account' %}">
+        <form method="post" action="{% url 'details' %}">
             {% csrf_token %}
             {% for field in account_form %}
                 <p>

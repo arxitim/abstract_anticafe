@@ -47,8 +47,8 @@ class MyRegisterFormView(FormView):
         return render(request, self.template_name, context)
 
 
-class AccountView(FormView):
-    template_name = 'core/account.html'
+class AccountDetails(FormView):
+    template_name = 'core/account_details.html'
 
     def post(self, request, *args, **kwargs):
         context = {}

@@ -96,23 +96,57 @@ a {
 /*По-моему здесь слишком много всего o_0 */
 .block {
     margin: 8px 0;
-    height: 240px;
-    line-height: 240px;
-    font-size: 48px;
-    text-align: center;
     user-select: none;
-    background-color: #353535;
-    color: aliceblue;
-    transition: 0.3s;
 }
 
-.block:hover {
-    background-color: #4c4c4c;
-    transition: 0.4s;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+@media screen and (min-width:768px) and (max-width:991px) {
+     .block {
+        height: 200px;
+    }
+}
+
+@media screen and (min-width:992px) and (max-width:1199px) {
+     .block {
+        height: 200px;
+    }
+}
+
+@media screen and (min-width:1200px){
+     .block {
+        height: 200px;
+    }
+
+    .desktop {
+        -webkit-filter: grayscale(100%);
+        -moz-filter: grayscale(100%);
+        -ms-filter: grayscale(100%);
+        -o-filter: grayscale(100%);
+        filter: grayscale(100%);
+        filter: gray; /* IE 6-9 */
+        transition: 0.3s;
+    }
+
+    .desktop:hover {
+        width: 100%;
+        height: 100%;
+        -webkit-filter: none;
+        -moz-filter: none;
+        -ms-filter: none;
+        -o-filter: none;
+        filter: none;
+        filter: none; /* IE 6-9 */
+        transition: 0.4s;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    }
+}
+
+.mini_table {
+    width: 100%;
+    height: 100%;
 }
 
 .footer {
+    margin-top: 50px;
     height: 140px;
     font-size: 90px;
     text-align: center;
@@ -127,4 +161,9 @@ a {
     margin-right: auto;
 }
 
-/*не люблю фронт'енд*/
+::-webkit-scrollbar { width: 4px;}
+::-webkit-scrollbar-track {  background-color: #835e45;}
+::-webkit-scrollbar-track-piece { background-color: #3f3f3f;}
+::-webkit-scrollbar-thumb { height: 50px; background-color: #835e45;}
+::-webkit-scrollbar-corner { background-color: #3f3f3f;}}
+::-webkit-resizer { background-color: #3f3f3f}
