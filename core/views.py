@@ -4,25 +4,28 @@ from django.views.generic.edit import FormView
 from django.contrib.auth import login, authenticate
 
 from core.forms import RegistrationForm, AccountUpdateForm
+from core.models import Table
 
 
 class HomePage(View):
     template_name = 'core/index.html'
 
     def get(self, request):
-        tables = [1, 2,
-                  3, 4,
-                  5, 6,
-                  7, 8,
-                  ]
+        tables = Table.objects.values_list('pk', flat=True)
         return render(request, self.template_name, context={'tables': tables})
 
 
-class Table(View):
+class TableView(View):
     template_name = 'core/table.html'
 
     def get(self, request, table_id):
-        return render(request, self.template_name, context={'table_id': table_id})
+        context = {}
+
+        table = Table.objects.get(pk=table_id)
+        table.description = table.description.split('\n')
+
+        context['table'] = table
+        return render(request, self.template_name, context)
 
 
 class MyRegisterFormView(FormView):

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.core.validators import MaxValueValidator
 
 
 class MyAccountManager(BaseUserManager):
@@ -54,4 +55,11 @@ class Account(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return True
+
+
+class Table(models.Model):
+    capacity = models.IntegerField(validators=[MaxValueValidator(32)])
+    is_busy = models.BooleanField(default=False)
+    description = models.TextField(max_length=1024)
+    short_description = models.TextField(max_length=128, default='some short description')
 
