@@ -8,6 +8,9 @@ from core.models import Table
 
 
 class HomePage(View):
+    """
+    Responsible for the internal logic of main page formation
+    """
     template_name = 'core/index.html'
 
     def get(self, request):
@@ -29,6 +32,9 @@ class TableView(View):
 
 
 class MyRegisterFormView(FormView):
+    """
+    Responsible for the internal logic of the registration page formation.
+    """
     template_name = 'registration/register.html'
 
     def post(self, request, *args, **kwargs):
@@ -53,6 +59,9 @@ class MyRegisterFormView(FormView):
 
 
 class AccountDetails(FormView):
+    """
+    Responsible for the internal logic of account details page formation.
+    """
     template_name = 'core/account_details.html'
 
     def post(self, request, *args, **kwargs):
@@ -82,6 +91,9 @@ class AccountDetails(FormView):
 
 
 class PageNotFound(View):
+    """
+    Responsible for the logic of forming the page to which the user gets the wrong url link.
+    """
     template_name = 'core/not_found.html'
 
     def get(self, request):
