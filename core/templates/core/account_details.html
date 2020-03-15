@@ -44,9 +44,26 @@
             <input type="submit" value="Save changes" />
             <input type="hidden" name="next" value="{{ next }}" />
         </form>
+
+        <h3>Узнать детали текущего аккаунта ajax'ом</h3>
+        <div id="jsonresp">
+            <p><label> id :</label> <span id="id"></span></p>
+            <p><label> Email :</label> <span id="email"></span></p>
+            <p><label> Username :</label> <span id="username"></span></p>
+            <p><label> Last_Login :</label> <span id="last_login"></span></p>
+        </div>
+
+        <div>
+            <button class="apireq">click me </button>
+        </div>
     </div>
 {% endblock %}
 
 {% block footer %}
     {% include "core/footer.html" %}
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{% static 'core/js/testing.js' %}"></script>
 {% endblock %}

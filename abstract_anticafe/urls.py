@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path, include
+
 from core.views import HomePage, PageNotFound, TableView, MyRegisterFormView, AccountDetails
 
 urlpatterns = [
@@ -24,5 +25,8 @@ urlpatterns = [
     path('register/', MyRegisterFormView.as_view(), name='register'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('tables/<int:table_id>', TableView.as_view()),
+
+    path('api/', include('api.urls')),
+
     re_path(r'.*', PageNotFound.as_view()),
 ]
