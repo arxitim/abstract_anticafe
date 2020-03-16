@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from core.models import Account, Table
+from core.models import Account, Table, TableBookingQueue
 
 
 class AccountAdmin(UserAdmin):
@@ -18,5 +18,10 @@ class TableAdmin(admin.ModelAdmin):
     list_display = ('id', 'capacity', 'is_busy', 'short_description')
 
 
+class TableBookingQueueAdmin(admin.ModelAdmin):
+    list_display = ('table', 'account', 'guests_count', 'dt_init', 'dt_start', 'dt_end')
+
+
 admin.site.register(Account, AccountAdmin)
 admin.site.register(Table, TableAdmin)
+admin.site.register(TableBookingQueue, TableBookingQueueAdmin)
