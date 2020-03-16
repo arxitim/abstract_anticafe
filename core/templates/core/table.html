@@ -20,7 +20,8 @@
         {% for paragraph in table.description %}
             <p>{{ paragraph }}</p>
         {% endfor %}
-        <button class="book_now" onclick="bookingNow({{ table.pk }})">Забронировать</button>
+        <button class="book_now" onclick="bookingNowTest({{ table.pk }})">Забронировать (Test)</button>
+        <button class="book_now" onclick="bookingNow({{ table.pk }})">Узнать номер стола</button>
     </div>
 {% endblock %}
 
@@ -29,5 +30,6 @@
 {% endblock %}
 
 {% block scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="{% static 'core/js/testing.js' %}"></script>
 {% endblock %}

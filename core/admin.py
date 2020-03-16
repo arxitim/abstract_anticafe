@@ -19,7 +19,7 @@ class TableAdmin(admin.ModelAdmin):
 
 
 class TableBookingQueueAdmin(admin.ModelAdmin):
-    list_display = ('table', 'account', 'guests_count', 'dt_init', 'dt_start', 'dt_end')
+    list_display = ('pk', 'table', 'account', 'guests_count', 'dt_init', 'dt_start', 'dt_end')
 
 
 admin.site.register(Account, AccountAdmin)

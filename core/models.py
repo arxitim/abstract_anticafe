@@ -64,7 +64,7 @@ class Table(models.Model):
     short_description = models.TextField(max_length=128, default='some short description')
 
     def __str__(self):
-        return str(self.id) + ' ' + self.short_description
+        return str(self.id) + ' ' + str(self.short_description)
 
 
 class TableBookingQueue(models.Model):
