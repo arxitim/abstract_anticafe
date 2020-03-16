@@ -40,7 +40,7 @@ class MyRegisterFormView(FormView):
     def post(self, request, *args, **kwargs):
         context = {}
         form = RegistrationForm(request.POST)
-        if form.is_valid():
+        if form.is_valid() and request.recaptcha_is_valid:
             form.save()
             email = form.cleaned_data.get('email')
             raw_password = form.cleaned_data.get('password1')
