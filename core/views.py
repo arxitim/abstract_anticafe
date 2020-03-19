@@ -3,7 +3,7 @@ from django.views import View
 from django.views.generic.edit import FormView
 from django.contrib.auth import login, authenticate
 
-from core.forms import RegistrationForm, AccountUpdateForm
+from core.forms import RegistrationForm, AccountUpdateForm, BookingForm
 from core.models import Table
 
 
@@ -28,6 +28,16 @@ class TableView(View):
         table.description = table.description.split('\n')
 
         context['table'] = table
+        return render(request, self.template_name, context)
+
+
+class BookingView(FormView):
+    template_name = 'core/table_booking.html'
+
+    def get(self, request, *args, **kwargs):
+        context = {}
+        form = BookingForm()
+        context['form'] = form
         return render(request, self.template_name, context)
 
 

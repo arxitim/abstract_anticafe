@@ -1,6 +1,6 @@
 from django.utils import timezone
-
 from django.shortcuts import redirect
+from django.http import JsonResponse
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -29,5 +29,5 @@ class BookingNow(APIView):
         new_booking = TableBookingQueue.objects.create(table=table, account=account,
                                                        guests_count=3, dt_start=timezone.now(),
                                                        dt_end=timezone.now())
-        return Response({1})
+        return JsonResponse({"status": True})
 

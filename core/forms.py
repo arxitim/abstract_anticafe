@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
-from core.models import Account
+from core.models import Account, TableBookingQueue
 
 
 class RegistrationForm(UserCreationForm):
@@ -39,3 +39,9 @@ class AccountUpdateForm(forms.ModelForm):
                 return username
 
             raise forms.ValidationError(f'Username {username} already exist')
+
+
+class BookingForm(forms.ModelForm):
+    class Meta:
+        model = TableBookingQueue
+        fields = ('table', 'account', 'guests_count', 'dt_start', 'dt_end')

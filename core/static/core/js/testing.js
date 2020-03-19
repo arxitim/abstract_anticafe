@@ -1,5 +1,5 @@
-function bookingNowTest(table_id) {
-    alert(document.cookie.slice(10))
+function redirectToHome() {
+  window.location.replace('/');
 }
 
 function bookingNow(table_id) {
@@ -12,14 +12,14 @@ function bookingNow(table_id) {
         url: "http://127.0.0.1:8000/api/booking_now/" + table_id,
         dataType: "json",
         data: {
-            csrfmiddlewaretoken: document.cookie.slice(10)
+            csrfmiddlewaretoken: document.cookie.slice(10),
+
         },
         success: function(data) {
-            if (data.status == true) {
-                alert(data)
+            if (data.status) {
                 alert("Успешно заказан столик")
+                setTimeout(redirectToHome, 2000)
             } else {
-                alert(typeof data)
                 alert("Упс, вы накосячили")
             }
         }

@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path, include
 
-from core.views import HomePage, PageNotFound, TableView, MyRegisterFormView, AccountDetails
+from core.views import HomePage, PageNotFound, TableView, MyRegisterFormView, AccountDetails, BookingView
 from core.decorators import check_recaptcha
 
 
@@ -27,6 +27,7 @@ urlpatterns = [
     path('register/', check_recaptcha(MyRegisterFormView.as_view()), name='register'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('tables/<int:table_id>', TableView.as_view()),
+    path('tables/<int:table_id>/booking', BookingView.as_view(), name='bookingNow'),
 
     path('api/', include('api.urls')),
 

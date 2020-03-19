@@ -20,16 +20,12 @@
         {% for paragraph in table.description %}
             <p>{{ paragraph }}</p>
         {% endfor %}
-        <button class="book_now" onclick="bookingNowTest({{ table.pk }})">Забронировать (Test)</button>
-        <button class="book_now" onclick="bookingNow({{ table.pk }})">Узнать номер стола</button>
+        <form action="{% url 'bookingNow' table.pk %}">
+            <button>Заказать Стол</button>
+        </form>
     </div>
 {% endblock %}
 
 {% block footer %}
     {% include "core/footer.html" %}
-{% endblock %}
-
-{% block scripts %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="{% static 'core/js/testing.js' %}"></script>
 {% endblock %}
