@@ -34,6 +34,16 @@ class TableView(View):
 class BookingView(FormView):
     template_name = 'core/table_booking.html'
 
+    def post(self, request, *args, **kwargs):
+        context = {}
+        form = BookingForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('homePage')
+        else:
+            context['form'] = form
+        return render(request, self.template_name, context)
+
     def get(self, request, *args, **kwargs):
         context = {}
         form = BookingForm()

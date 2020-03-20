@@ -42,6 +42,9 @@ class AccountUpdateForm(forms.ModelForm):
 
 
 class BookingForm(forms.ModelForm):
+    dt_start = forms.DateTimeField(input_formats=['%d/%m/%Y %H:%M'])
+    dt_end = forms.DateTimeField(input_formats=['%d/%m/%Y %H:%M'])
+
     class Meta:
         model = TableBookingQueue
         fields = ('table', 'account', 'guests_count', 'dt_start', 'dt_end')

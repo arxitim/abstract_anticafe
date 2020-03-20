@@ -15,21 +15,24 @@
 {% endblock %}
 
 {% block content %}
-    {% for field in form %}
-        <p>
-            {{ field.label_tag }}
-            {{ field }}
+    <form action="" method="post">{% csrf_token %}
+        {% for field in form %}
+            <p>
+                {{ field.label_tag }}
+                {{ field }}
 
-            {% if field.help_text %}
-                <small>{{ field.help_text }}</small>
-            {% endif %}
+                {% if field.help_text %}
+                    <small>{{ field.help_text }}</small>
+                {% endif %}
 
-            {% for error in field.errors %}
-                <p style="color: red;">{{ error }}</p>
-            {% endfor %}
+                {% for error in field.errors %}
+                    <p style="color: red;">{{ error }}</p>
+                {% endfor %}
 
-        </p>
-    {% endfor %}
+            </p>
+        {% endfor %}
+        <input type="submit" value="Заказать">
+    </form>
 {% endblock %}
 
 {% block footer %}
@@ -37,6 +40,13 @@
 {% endblock %}
 
 {% block scripts %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <!-- XDSoft DateTimePicker -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
+
+
     <script src="{% static 'core/js/testing.js' %}"></script>
 {% endblock %}

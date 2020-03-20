@@ -42,3 +42,12 @@ $('.apireq').click(function() {
         }
     });
 });
+
+$(function () {
+    $("#id_dt_start").datetimepicker({
+      format: 'd/m/Y H:i',
+    });
+    $("#id_dt_end").datetimepicker({
+      format: 'd/m/Y H:i',
+    });
+});
