@@ -37,6 +37,14 @@ class BookingView(FormView):
     def post(self, request, *args, **kwargs):
         context = {}
         form = BookingForm(request.POST)
+
+        # Point of entry to the shit
+        # https://stackoverflow.com/questions/44717442/this-querydict-instance-is-immutable
+        form.data._mutable = True
+        form.data['table'] = request.resolver_match.kwargs['table_id']
+        form.data['account'] = request.user.pk
+        # Point of exit from the shit
+
         if form.is_valid():
             form.save()
             return redirect('homePage')
@@ -46,8 +54,10 @@ class BookingView(FormView):
 
     def get(self, request, *args, **kwargs):
         context = {}
-        form = BookingForm()
+        table = Table.objects.get(pk=request.resolver_match.kwargs['table_id'])
+        form = BookingForm(custom_values={'max_capacity': table.capacity})
         context['form'] = form
+        context['table'] = table
         return render(request, self.template_name, context)
 
 

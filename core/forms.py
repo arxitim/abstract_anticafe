@@ -4,6 +4,9 @@ from django.contrib.auth.forms import UserCreationForm
 from core.models import Account, TableBookingQueue
 
 
+AVERAGE_MAX_CAPACITY = 32
+
+
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField(max_length=60, help_text='Required. Add a valid email address')
 
@@ -42,9 +45,22 @@ class AccountUpdateForm(forms.ModelForm):
 
 
 class BookingForm(forms.ModelForm):
-    dt_start = forms.DateTimeField(input_formats=['%d/%m/%Y %H:%M'])
-    dt_end = forms.DateTimeField(input_formats=['%d/%m/%Y %H:%M'])
-
     class Meta:
         model = TableBookingQueue
         fields = ('table', 'account', 'guests_count', 'dt_start', 'dt_end')
+        widgets = {
+            'table': forms.HiddenInput(),
+            'account': forms.HiddenInput(),
+        }
+
+    def __init__(self, *args, **kwargs):
+        if 'custom_values' in kwargs:
+            custom_values = kwargs.pop('custom_values')
+            max_capacity = custom_values['max_capacity']
+        else:
+            max_capacity = AVERAGE_MAX_CAPACITY
+        super().__init__(*args, **kwargs)
+
+        self.fields['guests_count'] = forms.IntegerField(min_value=1, max_value=max_capacity)
+        self.fields['dt_start'] = forms.DateTimeField(input_formats=['%d/%m/%Y %H:%M'])
+        self.fields['dt_end'] = forms.DateTimeField(input_formats=['%d/%m/%Y %H:%M'])

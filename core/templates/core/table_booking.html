@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-    Забронировать стол{{ table.pk }}
+    Забронировать стол
 {% endblock %}
 
 {% block styles %}
@@ -15,8 +15,9 @@
 {% endblock %}
 
 {% block content %}
+    <h1>Бронирование стола {{ table.pk }} {{ table.short_description }}</h1>
     <form action="" method="post">{% csrf_token %}
-        {% for field in form %}
+        {% for field in form.visible_fields %}
             <p>
                 {{ field.label_tag }}
                 {{ field }}
