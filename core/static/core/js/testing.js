@@ -1,30 +1,6 @@
 function redirectToHome() {
-  window.location.replace('/');
+    window.location.replace('/');
 }
-
-function bookingNow(table_id) {
-    /**
-     * ajax-request feature
-     * to process booking operation
-     */
-    $.ajax({
-        type: "POST",
-        url: "http://127.0.0.1:8000/api/booking_now/" + table_id,
-        dataType: "json",
-        data: {
-            csrfmiddlewaretoken: document.cookie.slice(10),
-
-        },
-        success: function(data) {
-            if (data.status) {
-                alert("Успешно заказан столик")
-                setTimeout(redirectToHome, 2000)
-            } else {
-                alert("Упс, вы накосячили")
-            }
-        }
-    });
-};
 
 $('.apireq').click(function() {
     /**
@@ -43,11 +19,30 @@ $('.apireq').click(function() {
     });
 });
 
-$(function () {
-    $("#id_dt_start").datetimepicker({
-      format: 'd/m/Y H:i',
-    });
-    $("#id_dt_end").datetimepicker({
-      format: 'd/m/Y H:i',
+//https://xdsoft.net/jqplugins/datetimepicker/
+$(function() {
+    //  A day to which you can book
+    var datetime_max = new Date();
+    datetime_max.setDate(datetime_max.getDate() + 31);
+
+    var data = {
+        step: 30,
+        theme: "dark",
+        format: 'd/m/Y H:i',
+        minDate: new Date(),
+    };
+
+    $.datetimepicker.setLocale('ru');
+
+    $("#id_dt_start").datetimepicker(Object.assign(data, {
+        minTime: "17:00",
+        maxDate: datetime_max,
+    }));
+
+    $("#id_dt_end").datetimepicker(Object.assign(data, {}));
+
+    $('.dt_end').click(function() {
+        var dt_start_str = $('#id_dt_start').val();
+        // TODO: доделать динамическое ограничение на это поле исходя из #id_dt_start
     });
 });

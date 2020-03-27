@@ -3,3 +3,4 @@
 /venv/
 /.idea/
 /celerybeat-schedule
+/celerybeat.pid

@@ -61,6 +61,31 @@ class BookingForm(forms.ModelForm):
             max_capacity = AVERAGE_MAX_CAPACITY
         super().__init__(*args, **kwargs)
 
-        self.fields['guests_count'] = forms.IntegerField(min_value=1, max_value=max_capacity)
-        self.fields['dt_start'] = forms.DateTimeField(input_formats=['%d/%m/%Y %H:%M'])
-        self.fields['dt_end'] = forms.DateTimeField(input_formats=['%d/%m/%Y %H:%M'])
+        # ----------------------field for guests count--------------------------------------
+        self.fields['guests_count'] = forms.IntegerField(min_value=1,
+                                                         max_value=max_capacity)
+        self.fields['guests_count'].label = 'Кол-во гостей'
+        # ----------------------------------------------------------------------------------
+
+        # --------------  field for datetime of booking start ------------------------------
+        attributes = {
+            'autocomplete': 'off',
+            'class': 'dt_start',
+            'readonly': None,
+        }
+
+        self.fields['dt_start'] = forms.DateTimeField(input_formats=['%d/%m/%Y %H:%M'],
+                                                      widget=forms.TextInput(attrs=attributes))
+        self.fields['dt_start'].label = 'Дата и время начала посещения'
+        # ----------------------------------------------------------------------------------
+
+        # --------------  field for datetime of booking end   ------------------------------
+        attributes = {
+            'autocomplete': 'off',
+            'class': 'dt_end',
+            'readonly': None,
+        }
+        self.fields['dt_end'] = forms.DateTimeField(input_formats=['%d/%m/%Y %H:%M'],
+                                                    widget=forms.TextInput(attrs=attributes))
+        self.fields['dt_end'].label = 'Дата и время конца   посещения'
+        # ----------------------------------------------------------------------------------
