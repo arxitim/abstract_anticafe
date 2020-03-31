@@ -1,3 +1,5 @@
+from datetimerange import DateTimeRange
+
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
@@ -53,6 +55,10 @@ class BookingForm(forms.ModelForm):
             'account': forms.HiddenInput(),
         }
 
+    def start_end_excetion(self, msg):
+        self.add_error('dt_start', forms.ValidationError(msg))
+        self.add_error('dt_end', forms.ValidationError(msg))
+
     def __init__(self, *args, **kwargs):
         if 'custom_values' in kwargs:
             custom_values = kwargs.pop('custom_values')
@@ -94,7 +100,16 @@ class BookingForm(forms.ModelForm):
         cleaned_data = super().clean()
         dt_start = cleaned_data.get('dt_start')
         dt_end = cleaned_data.get('dt_end')
+        booking_datetime_range = DateTimeRange(dt_start, dt_end)
+
         if dt_start >= dt_end:
-            msg = 'Дата и время начала брони должны быть меньше даты и времени конца'
-            self.add_error('dt_start', forms.ValidationError(msg))
-            self.add_error('dt_end', forms.ValidationError(msg))
+            self.start_end_excetion(msg='Дата и время начала брони должны быть меньше даты и времени конца')
+
+        # TODO: refactor (we don't need ALL values)
+        reservations = TableBookingQueue.objects.filter(table=cleaned_data.get('table'))
+        #
+        for busy_table in reservations:
+            busy_table_datetime_range = DateTimeRange(busy_table.dt_start, busy_table.dt_end)
+            if booking_datetime_range.is_intersection(busy_table_datetime_range):
+                self.start_end_excetion(msg='О-о, в данном диапазоне уже занято :3')
+                break
