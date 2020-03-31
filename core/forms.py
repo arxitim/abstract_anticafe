@@ -87,5 +87,14 @@ class BookingForm(forms.ModelForm):
         }
         self.fields['dt_end'] = forms.DateTimeField(input_formats=['%d/%m/%Y %H:%M'],
                                                     widget=forms.TextInput(attrs=attributes))
-        self.fields['dt_end'].label = 'Дата и время конца   посещения'
+        self.fields['dt_end'].label = 'Дата и время конца посещения'
         # ----------------------------------------------------------------------------------
+
+    def clean(self):
+        cleaned_data = super().clean()
+        dt_start = cleaned_data.get('dt_start')
+        dt_end = cleaned_data.get('dt_end')
+        if dt_start >= dt_end:
+            msg = 'Дата и время начала брони должны быть меньше даты и времени конца'
+            self.add_error('dt_start', forms.ValidationError(msg))
+            self.add_error('dt_end', forms.ValidationError(msg))
