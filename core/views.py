@@ -40,9 +40,13 @@ class BookingView(FormView):
 
         # Point of entry to the shit
         # https://stackoverflow.com/questions/44717442/this-querydict-instance-is-immutable
+        default_mutability = form.data._mutable
         form.data._mutable = True
+
         form.data['table'] = request.resolver_match.kwargs['table_id']
         form.data['account'] = request.user.pk
+
+        form.data._mutable = default_mutability
         # Point of exit from the shit
 
         if form.is_valid():
@@ -50,7 +54,7 @@ class BookingView(FormView):
             return redirect('homePage')
         else:
             context['form'] = form
-        return render(request, self.template_name, context)
+            return render(request, self.template_name, context)
 
     def get(self, request, *args, **kwargs):
         context = {}
@@ -61,7 +65,7 @@ class BookingView(FormView):
         return render(request, self.template_name, context)
 
 
-class MyRegisterFormView(FormView):
+class RegisterFormView(FormView):
     """
     Responsible for the internal logic of the registration page formation.
     """
@@ -79,7 +83,7 @@ class MyRegisterFormView(FormView):
             return redirect('homePage')
         else:
             context['form'] = form
-        return render(request, self.template_name, context)
+            return render(request, self.template_name, context)
 
     def get(self, request, *args, **kwargs):
         context = {}
@@ -95,6 +99,14 @@ class AccountDetails(FormView):
     template_name = 'core/account_details.html'
 
     def post(self, request, *args, **kwargs):
+        """
+        Using for updating account info
+
+        :param request:
+        :param args:
+        :param kwargs:
+        :return:
+        """
         context = {}
         form = AccountUpdateForm(request.POST, instance=request.user)
         if form.is_valid():

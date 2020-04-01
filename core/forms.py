@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from core.models import Account, TableBookingQueue
 
 
-AVERAGE_MAX_CAPACITY = 32
+MAX_CAPACITY = 8
 
 
 class RegistrationForm(UserCreationForm):
@@ -18,7 +18,6 @@ class RegistrationForm(UserCreationForm):
 
 
 class AccountUpdateForm(forms.ModelForm):
-
     class Meta:
         model = Account
         fields = ('email', 'username')
@@ -56,20 +55,23 @@ class BookingForm(forms.ModelForm):
         }
 
     def start_end_excetion(self, msg):
+        """
+        The main method to raise validation errors in fields dt_start, dt_end
+
+        :param msg: string Error text
+        :return: None
+        """
         self.add_error('dt_start', forms.ValidationError(msg))
         self.add_error('dt_end', forms.ValidationError(msg))
 
     def __init__(self, *args, **kwargs):
-        if 'custom_values' in kwargs:
-            custom_values = kwargs.pop('custom_values')
-            max_capacity = custom_values['max_capacity']
-        else:
-            max_capacity = AVERAGE_MAX_CAPACITY
+        custom_values = kwargs.pop('custom_values', {})
+
         super().__init__(*args, **kwargs)
 
         # ----------------------field for guests count--------------------------------------
         self.fields['guests_count'] = forms.IntegerField(min_value=1,
-                                                         max_value=max_capacity)
+                                                         max_value=custom_values.get('max_capacity', MAX_CAPACITY))
         self.fields['guests_count'].label = 'Кол-во гостей'
         # ----------------------------------------------------------------------------------
 
@@ -91,25 +93,34 @@ class BookingForm(forms.ModelForm):
             'class': 'dt_end',
             'readonly': None,
         }
+
         self.fields['dt_end'] = forms.DateTimeField(input_formats=['%d/%m/%Y %H:%M'],
                                                     widget=forms.TextInput(attrs=attributes))
         self.fields['dt_end'].label = 'Дата и время конца посещения'
         # ----------------------------------------------------------------------------------
 
     def clean(self):
+        """
+        Custom validation of fields
+        Ex.: dt_start must be lower than a dt_end
+        :return:
+        """
         cleaned_data = super().clean()
         dt_start = cleaned_data.get('dt_start')
         dt_end = cleaned_data.get('dt_end')
-        booking_datetime_range = DateTimeRange(dt_start, dt_end)
 
         if dt_start >= dt_end:
             self.start_end_excetion(msg='Дата и время начала брони должны быть меньше даты и времени конца')
+            return
+
+        booking_datetime_range = DateTimeRange(dt_start, dt_end)
 
         # TODO: refactor (we don't need ALL values)
         reservations = TableBookingQueue.objects.filter(table=cleaned_data.get('table'))
         #
         for busy_table in reservations:
             busy_table_datetime_range = DateTimeRange(busy_table.dt_start, busy_table.dt_end)
+
             if booking_datetime_range.is_intersection(busy_table_datetime_range):
                 self.start_end_excetion(msg='О-о, в данном диапазоне уже занято :3')
                 break
