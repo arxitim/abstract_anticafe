@@ -1,4 +1,5 @@
 {% load static %}
+{% load poll_extras %}
 <header>
     <a href="{% url 'homePage' %}">
         <img class="main_logo" src="{% static 'core/img/main_logo.png' %}">
@@ -6,17 +7,15 @@
 
     <div class="login_block">
         {% if user.is_authenticated %}
-            <a href="{% url 'details' %}">{{ user.username }}</a>
-            <form class="loginout_button" action="{% url 'logout' %}?next={{ request.path }}">
-                <button>Logout</button>
-            </form>
+            <a href="{% url 'details' %}?next={{ request.path }}">{{ user.username }}  </a>
+            <a href="{% url 'logout' %}?next={{ request.path }}">Logout</a>
         {% else %}
-            <form class="register_button" action="{% url 'register' %}?next={{ request.path }}">
-                <button>Register</button>
-            </form>
-            <form class="loginout_button" action="{% url 'login' %}?next={{ request.path }}">
-                <button>Login</button>
-            </form>
+            {% to_list "/accounts/login/" "/register/" as list %}
+            {% if request.path not in list %}
+                <a href="{% url 'register' %}?next={{ request.path }}">Register </a>
+                <a href="{% url 'login' %}?next={{ request.path }}">Login</a>
+            {% endif %}
+
         {% endif %}
     </div>
 </header>

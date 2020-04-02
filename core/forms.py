@@ -23,26 +23,20 @@ class AccountUpdateForm(forms.ModelForm):
         fields = ('email', 'username')
 
     def clean_email(self):
-        if self.is_valid():
-            email = self.cleaned_data['email']
+        email = self.cleaned_data['email']
 
-            try:
-                account = Account.objects.exclude(pk=self.instance.pk).get(email=email)
-            except:
-                return email
-
+        if Account.objects.exclude(pk=self.instance.pk).filter(email=email):
             raise forms.ValidationError(f'Email {email} already exist')
+        else:
+            return email
 
     def clean_username(self):
-        if self.is_valid():
-            username = self.cleaned_data['username']
+        username = self.cleaned_data['username']
 
-            try:
-                account = Account.objects.exclude(pk=self.instance.pk).get(username=username)
-            except:
-                return username
-
+        if Account.objects.exclude(pk=self.instance.pk).filter(username=username):
             raise forms.ValidationError(f'Username {username} already exist')
+        else:
+            return username
 
 
 class BookingForm(forms.ModelForm):
