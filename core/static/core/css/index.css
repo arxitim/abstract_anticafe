@@ -1,7 +1,9 @@
 html, body {
     margin: 0;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
     background-color: #3f3f3f;
+    min-height: 100vh;
 }
 
 header {
@@ -20,28 +22,6 @@ a {
     text-decoration: none;
 }
 
-.loginout_button {
-    margin-left: 20px;
-}
-
-.login_page_form {
-    margin-left: auto;
-    margin-right: auto;
-    width: 20%;
-}
-
-.account_page_form {
-    margin-left: auto;
-    margin-right: auto;
-    width: 40%;
-}
-
-.register_page_form {
-    margin-left: auto;
-    margin-right: auto;
-    width: 60%;
-}
-
 .login_block {
     display:flex;
     margin-right: 25px;
@@ -53,15 +33,8 @@ a {
     height: 60px;
 }
 
-.wrapper {
-    display: table;
-    height: 100%;
-    width: 100%;
-}
-
 .content {
-    display: table-row;
-    height: 100%;
+    flex-grow: 1;
 }
 
 .table {
@@ -69,29 +42,19 @@ a {
 }
 
 .table_img {
-    height: 300px;
-    width: 500px;
+    height: auto;
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
 
 .table_details {
-    width: 800px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 40px;
     margin-bottom: 40px;
 }
 
-.book_now {
-    height: 40px;
-    width: 150px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 30px;
-}
 
 .block {
     margin-top: 8px;
@@ -99,23 +62,47 @@ a {
     user-select: none;
 }
 
+/*Мобильные усройства*/
+@media screen and (max-width:767px) {
+    .table_img, .table_details {
+        max-width: 90%;
+    }
+}
+
+/*Планшеты*/
 @media screen and (min-width:768px) and (max-width:991px) {
      .block {
         height: 200px;
     }
+    
+    .table_img, .table_details {
+        max-width: 80%;
+    }
+    
 }
 
+/*Маленькие мониторы*/
 @media screen and (min-width:992px) and (max-width:1199px) {
      .block {
         height: 200px;
     }
+    
+    .table_img, .table_details {
+        max-width: 80%;
+    }
+    
 }
 
+/*Большие мониторы*/
 @media screen and (min-width:1200px){
      .block {
         height: 200px;
     }
-
+        
+    .table_img, .table_details {
+        max-width: 70%;
+    }
+    
     .desktop {
         -webkit-filter: grayscale(100%);
         -moz-filter: grayscale(100%);
@@ -146,6 +133,7 @@ a {
 }
 
 .footer {
+    flex-shrink: 0;
     margin-top: 50px;
     height: 140px;
     font-size: 90px;

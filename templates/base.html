@@ -7,13 +7,11 @@
     {% block styles %}{% endblock %}
 </head>
 <body>
-    <div class="wrapper">
-        {% block header %}{% endblock %}
-        <div class="content">
-            {% block content %}{% endblock %}
-        </div>
-        {% block footer %}{% endblock %}
+    {% block header %}{% endblock %}
+    <div class="content">
+        {% block content %}{% endblock %}
     </div>
+    {% block footer %}{% endblock %}
     {% block scripts %}{% endblock %}
 </body>
 </html>
