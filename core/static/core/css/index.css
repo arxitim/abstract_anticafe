@@ -7,30 +7,7 @@ html, body {
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 50px;
-    height: 80px;
-    font-size: 2em;
-    line-height: 70px;
-    background-color: #262626;
-    color: aliceblue;
-}
-
-a {
-    color: aliceblue;
-    text-decoration: none;
-}
-
-.login_block {
-    display:flex;
-    margin-right: 25px;
-}
-
-.main_logo {
-    margin-left: 30px;
-    vertical-align: middle;
-    height: 60px;
+    background-color: #232323;
 }
 
 .content {
