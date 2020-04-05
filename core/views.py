@@ -111,10 +111,15 @@ class AccountDetails(FormView):
         form = AccountUpdateForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            return redirect('homePage')
-        else:
-            context['account_form'] = form
-            return render(request, self.template_name, context)
+            form.initial = {
+                'email': request.POST['email'],
+                'username': request.POST['username']
+            }
+
+            context['success_message'] = 'Updated'
+
+        context['account_form'] = form
+        return render(request, self.template_name, context)
 
     def get(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
@@ -123,8 +128,8 @@ class AccountDetails(FormView):
         context = {}
         form = AccountUpdateForm(
             initial={
-                "email": request.user.email,
-                "username": request.user.username,
+                'email': request.user.email,
+                'username': request.user.username,
             }
         )
 

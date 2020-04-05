@@ -113,14 +113,14 @@ header {
 
 /* Основные стили для форм */
 
-.form-signin {
+.form-account {
   width: 100%;
   max-width: 320px;
   padding: 15px;
   margin: auto;
  }
 
-.form-signin .form-control {
+.form-account .form-control {
     position: relative;
     box-sizing: border-box;
     height: auto;
@@ -128,20 +128,47 @@ header {
     font-size: 16px;
 }
 
-.form-signin .form-control:focus {
+.form-account .form-control:focus {
     z-index: 2;
 }
 
-.form-signin input[type="email"] {
+.form-account input[type="email"] {
     margin-bottom: -1px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
 }
 
-.form-signin input[type="password"] {
+.form-account input[type="text"] {
+    margin-bottom: 10px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
+
+/* Log in */
+#inputPassword {
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+}
+/* ------ */
+
+/* Registration */
+#inputPassword1 {
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#inputPassword2 {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-bottom: 10px;
+}
+/* ------------- */
+
+.g-recaptcha {
+    transform:scale(0.96);
+    transform-origin:0 0;
 }
 
 .h3 {
@@ -168,6 +195,11 @@ header {
 
 .error {
     color: red;
+}
+
+.success {
+    color: green;
+    text-align: center;
 }
 
 ::-webkit-scrollbar { width: 4px;}

@@ -15,47 +15,42 @@
 {% endblock %}
 
 {% block content %}
-    <div>
+    <form class="form-account" method="post">
+        {% csrf_token %}
+        <h1 class="h3 mb-3 font-weight-normal text-light">Account details</h1>
 
-        <form method="post" action="{% url 'details' %}">
-            {% csrf_token %}
-            {% for field in account_form %}
-                <p>
-                    {{ field.label_tag }}
-                    {{ field }}
+        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus value={{account_form.initial.email}}>
+        <input type="text" name="username" id="inputUsername" class="form-control" placeholder="Username" required value="{{account_form.initial.username}}">
 
-                    {% if field.help_text %}
-                        <small>{{ field.help_text }}</small>
-                    {% endif %}
-
-                </p>
+        {% for field in account_form %}
+            {% for error in field.errors %}
+                <p class="error">{{ error }}</p>
             {% endfor %}
+        {% endfor %}
 
-            {% for field in account_form %}
-                {% for error in field.errors %}
-                    <p>{{ error }}</p>
-                {% endfor %}
+        {% if form.non_field_errors %}
+            {% for error in account_form.non_field_errors %}
+                <p class="error">{{ error }}</p>
             {% endfor %}
+        {% endif %}
 
-            {% if account_form.non_field_errors %}
-                <p>{{ account_form.non_field_errors }}</p>
-            {% endif %}
+        {% if success_message%}
+            <p class="success">{{ success_message }}</p>
+        {% endif %}
+        <button class="btn btn-lg btn-secondary btn-block" type="submit">Save changes</button>
 
-            <input type="submit" value="Save changes" />
-            <input type="hidden" name="next" value="{{ next }}" />
-        </form>
+    </form>
 
-        <h3>Узнать детали текущего аккаунта ajax'ом</h3>
-        <div id="jsonresp">
-            <p> id : <span id="id"></span></p>
-            <p> Email : <span id="email"></span></p>
-            <p> Username : <span id="username"></span></p>
-            <p> Last login : <span id="last_login"></span></p>
-        </div>
+<!--        <h3>Узнать детали текущего аккаунта ajax'ом</h3>-->
+<!--        <div id="jsonresp">-->
+<!--            <p> id : <span id="id"></span></p>-->
+<!--            <p> Email : <span id="email"></span></p>-->
+<!--            <p> Username : <span id="username"></span></p>-->
+<!--            <p> Last login : <span id="last_login"></span></p>-->
+<!--        </div>-->
 
-        <button class="apireq">click me </button>
+<!--        <button class="apireq">click me </button>-->
 
-    </div>
 {% endblock %}
 
 {% block footer %}
