@@ -15,40 +15,29 @@
 {% endblock %}
 
 {% block content %}
-    <div>
+    <form class="form-signin" method="post">
+        {% csrf_token %}
+        <h1 class="h3 mb-3 font-weight-normal text-light">Login</h1>
 
-        <form method="post" action="{% url 'login' %}">
-            {% csrf_token %}
-            {% for field in form %}
-                <p>
-                    {{ field.label_tag }}
-                    {{ field }}
+        <input type="email" name="username" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
 
-                    {% if field.help_text %}
-                        <small>{{ field.help_text }}</small>
-                    {% endif %}
-
-                </p>
+        {% for field in form %}
+            {% for error in field.errors %}
+                <p class="error">{{ error }}</p>
             {% endfor %}
+        {% endfor %}
 
-            {% for field in form %}
-                {% for error in field.errors %}
-                    <p style="color: red;">{{ error }}</p>
-                {% endfor %}
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <p class="error">{{ error }}</p>
             {% endfor %}
+        {% endif %}
 
-            {% if form.non_field_errors %}
-                <div style="color:red;">
-                    <p>{{form.non_field_errors}}</p>
-                </div>
-            {% endif %}
+        <button class="btn btn-lg btn-secondary btn-block" type="submit">Log in</button>
+        <a class="text-light" href="{% url 'password_reset' %}">Lost password?</a>
 
-            <input type="submit" value="login" />
-            <input type="hidden" name="next" value="{{ next }}" />
-        </form>
-
-        <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
-    </div>
+    </form>
 {% endblock %}
 
 {% block footer %}
