@@ -153,13 +153,13 @@ header {
 /* ------ */
 
 /* Registration */
-#inputPassword1 {
+#inputPassword1, #id_new_password1 {
     margin-bottom: -1px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
 
-#inputPassword2 {
+#inputPassword2, #id_new_password2 {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     margin-bottom: 10px;
