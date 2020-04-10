@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic.edit import FormView
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 
-from core.forms import RegistrationForm, AccountUpdateForm, BookingForm
+from core.forms import RegistrationForm, AccountUpdateForm, BookingForm, AccountAuthenticationForm
 from core.models import Table
 
 
@@ -90,6 +90,44 @@ class RegisterFormView(FormView):
         form = RegistrationForm()
         context['form'] = form
         return render(request, self.template_name, context)
+
+
+class LoginFormView(FormView):
+    template_name = 'registration/login.html'
+
+    def post(self, request, *args, **kwargs):
+        form = AccountAuthenticationForm(request.POST)
+        if form.is_valid():
+            email = request.POST['email']
+            password = request.POST['password']
+            user = authenticate(email=email, password=password)
+
+            if user:
+                login(request, user)
+                next_url = request.GET.get('next', 'homePage')
+                return redirect(next_url)
+        else:
+            return render(request, self.template_name, {'form': form})
+
+    def get(self, request, *args, **kwargs):
+        context = {}
+
+        user = request.user
+        if user.is_authenticated:
+            next_url = request.GET.get('next', 'homePage')
+            return redirect(next_url)
+
+        form = AccountAuthenticationForm()
+
+        context['form'] = form
+        return render(request, self.template_name, context)
+
+
+class LogoutView(View):
+    def get(self, request, *args, **kwargs):
+        logout(request)
+        next_url = request.GET.get('next')
+        return redirect(next_url)
 
 
 class AccountDetails(FormView):
