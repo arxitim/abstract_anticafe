@@ -15,24 +15,18 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Бронирование стола {{ table.pk }} {{ table.short_description }}</h1>
-    <form action="" method="post">{% csrf_token %}
+    <h1 class="h3 my-2 font-weight-normal text-light">Бронирование стола {{ table.pk }} {{ table.short_description }}</h1>
+    <form class="form-account" method="post">
+        {% csrf_token %}
         {% for field in form.visible_fields %}
-            <p>
-                {{ field.label_tag }}
-                {{ field }}
+            <label class="text-light mb-0">{{ field.label }}</label>
+            {{ field }}
 
-                {% if field.help_text %}
-                    <small>{{ field.help_text }}</small>
-                {% endif %}
-
-                {% for error in field.errors %}
-                    <p style="color: red;">{{ error }}</p>
-                {% endfor %}
-
-            </p>
+            {% if field.help_text %}
+                <small>{{ field.help_text }}</small>
+            {% endif %}
         {% endfor %}
-        <input type="submit" value="Заказать">
+        <button class="btn btn-lg btn-secondary btn-block" type="submit">Забронировать</button>
     </form>
 {% endblock %}
 

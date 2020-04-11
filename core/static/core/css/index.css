@@ -137,14 +137,8 @@ header {
     border-bottom-left-radius: 0;
 }
 
-.form-account input[type="text"] {
-    margin-bottom: 10px;
-    border-top-right-radius: 0;
-    border-top-left-radius: 0;
-}
-
 /* Log in */
-#inputPassword {
+#inputPassword, #inputUsername {
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;

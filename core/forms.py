@@ -81,15 +81,21 @@ class BookingForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
 
         # ----------------------field for guests count--------------------------------------
+        attributes = {
+            'autocomplete': 'off',
+            'class': 'form-control mb-3',
+        }
+
         self.fields['guests_count'] = forms.IntegerField(min_value=1,
-                                                         max_value=custom_values.get('max_capacity', MAX_CAPACITY))
+                                                         max_value=custom_values.get('max_capacity', MAX_CAPACITY),
+                                                         widget=forms.NumberInput(attrs=attributes))
         self.fields['guests_count'].label = 'Кол-во гостей'
         # ----------------------------------------------------------------------------------
 
         # --------------  field for datetime of booking start ------------------------------
         attributes = {
             'autocomplete': 'off',
-            'class': 'dt_start',
+            'class': 'dt_start form-control mb-3',
             'readonly': None,
         }
 
@@ -101,7 +107,7 @@ class BookingForm(forms.ModelForm):
         # --------------  field for datetime of booking end   ------------------------------
         attributes = {
             'autocomplete': 'off',
-            'class': 'dt_end',
+            'class': 'dt_end form-control mb-5',
             'readonly': None,
         }
 
