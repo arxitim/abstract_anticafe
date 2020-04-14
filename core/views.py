@@ -130,11 +130,11 @@ class LogoutView(View):
         return redirect(next_url)
 
 
-class AccountDetails(FormView):
+class AccountView(FormView):
     """
     Responsible for the internal logic of account details page formation.
     """
-    template_name = 'core/account_details.html'
+    template_name = 'core/account.html'
 
     def post(self, request, *args, **kwargs):
         """
