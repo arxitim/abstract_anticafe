@@ -108,7 +108,27 @@ header {
 .mini_table {
     width: 100%;
     height: 100%;
+    border-radius: 5px;
 }
+
+/* Страница забронированных столов */
+/*Мобильные усройства*/
+@media screen and (max-width:767px) {
+    .bookings {
+        min-width: 100vw;
+        margin-top: -8px
+    }
+}
+
+/*Прочие мониторы*/
+@media screen and (min-width:768px){
+    .bookings {
+    min-width: 40vw;
+    max-width: 60vw;
+    margin-top: 8vh;
+    }
+}
+/* ---------------------------------------------- */
 
 /* Основные стили для форм */
 

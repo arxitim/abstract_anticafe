@@ -4,7 +4,7 @@ from django.views.generic.edit import FormView
 from django.contrib.auth import login, authenticate, logout
 
 from core.forms import RegistrationForm, AccountUpdateForm, BookingForm, AccountAuthenticationForm
-from core.models import Table
+from core.models import Table, Account, TableBookingQueue
 
 
 class HomePage(View):
@@ -130,11 +130,27 @@ class LogoutView(View):
         return redirect(next_url)
 
 
-class AccountView(FormView):
+class MyBookingsView(View):
+    template_name = 'core/bookings.html'
+
+    def get(self, request, *args, **kwargs):
+        context = {}
+
+        if not request.user.is_authenticated:
+            return redirect('login')
+
+        user = Account.objects.get(pk=request.user.pk)
+        bookings = TableBookingQueue.objects.filter(account=user).order_by('-dt_start')
+        context['bookings'] = bookings
+
+        return render(request, self.template_name, context)
+
+
+class AccountDetails(FormView):
     """
     Responsible for the internal logic of account details page formation.
     """
-    template_name = 'core/account.html'
+    template_name = 'core/account_details.html'
 
     def post(self, request, *args, **kwargs):
         """

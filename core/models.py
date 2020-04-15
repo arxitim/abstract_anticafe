@@ -74,3 +74,6 @@ class TableBookingQueue(models.Model):
     dt_init = models.DateTimeField(auto_now=True)
     dt_start = models.DateTimeField()
     dt_end = models.DateTimeField()
+
+    def __str__(self):
+        return ' '.join(map(str, [self.pk, self.account, self.dt_start, self.dt_end]))

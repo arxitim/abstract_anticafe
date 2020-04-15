@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Мой аккаунт
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/index.css' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'core/img/favicon.ico' %}">
+{% endblock %}
+
+{% block header %}
+    {% include "core/header.html" %}
+{% endblock %}
+
+{% block content %}
+    <div class="mx-auto table-striped bookings">
+        <table class="table text-light">
+            <thead>
+                <tr>
+                    <th scope="col">Table</th>
+                    <th scope="col">Dt start</th>
+                    <th scope="col">Dt end</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for booking in bookings %}
+                    <tr>
+                        <td>{{ booking.table.short_description }}</td>
+                        <td>{{ booking.dt_start|date:'d.m, H:i' }}</td>
+                        <td>{{ booking.dt_end|date:'d.m, H:i' }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+<div class="mt-5 mr-5 text-right">
+     <a class="text-light" href="{% url 'account' %}">Account details</a>
+</div>
+{% endblock %}
+
+{% block footer %}
+    {% include "core/footer.html" %}
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{% static 'core/js/testing.js' %}"></script>
+{% endblock %}

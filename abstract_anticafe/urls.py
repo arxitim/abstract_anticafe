@@ -17,14 +17,15 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, re_path, include
 
-from core.views import HomePage, PageNotFound, TableView, RegisterFormView, AccountView, BookingView, LoginFormView, LogoutView
+from core.views import *
 from core.decorators import check_recaptcha
 
 
 urlpatterns = [
     path('', HomePage.as_view(), name='homePage'),
     path('admin/', admin.site.urls, name='admin'),
-    path('account/', AccountView.as_view(), name='account'),
+    path('bookings', MyBookingsView.as_view(), name='bookings'),
+    path('account/', AccountDetails.as_view(), name='account'),
     path('register/', check_recaptcha(RegisterFormView.as_view()), name='register'),
     path('login/', LoginFormView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
