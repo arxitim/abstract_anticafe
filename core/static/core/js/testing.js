@@ -18,3 +18,32 @@ $('.apireq').click(function() {
         }
     });
 });
+
+function openModal(pk) {
+    event.preventDefault();
+
+    $('#qrcode').empty();
+    var qrcode = new QRCode(document.getElementById('qrcode'), {
+	text: 'http://127.0.0.1/' + pk,
+	colorDark : "#000000",
+	colorLight : "#ffffff",
+    });
+
+    $('.overlay').fadeIn(100, function() {
+        $('.qrModal')
+            .css('display', 'block')
+            .animate({
+                opacity: 1
+            }, 110);
+    });
+};
+
+$('.qrModal__close, .overlay').click(function() {
+    $('.qrModal').animate({
+            opacity: 0
+        }, 70,
+        function() {
+            $(this).css('display', 'none');
+            $('.overlay').fadeOut(80);
+        });
+});
