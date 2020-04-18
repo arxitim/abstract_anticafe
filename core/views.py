@@ -38,17 +38,6 @@ class BookingView(FormView):
         context = {}
         form = BookingForm(request.POST)
 
-        # Point of entry to the shit
-        # https://stackoverflow.com/questions/44717442/this-querydict-instance-is-immutable
-        default_mutability = form.data._mutable
-        form.data._mutable = True
-
-        form.data['table'] = request.resolver_match.kwargs['table_id']
-        form.data['account'] = request.user.pk
-
-        form.data._mutable = default_mutability
-        # Point of exit from the shit
-
         if form.is_valid():
             form.save()
             return redirect('homePage')

@@ -18,6 +18,8 @@
     <h1 class="h3 my-2 font-weight-normal text-light">Бронирование стола {{ table.pk }} {{ table.short_description }}</h1>
     <form class="form-account" method="post">
         {% csrf_token %}
+        <input name="table" id="id_table" value="{{ table.pk }}" style="display: none">
+        <input name="account" id="id_account" value="{{ request.user.pk }}" style="display: none">
         {% for field in form.visible_fields %}
             <label class="text-light mb-0">{{ field.label }}</label>
             {{ field }}
