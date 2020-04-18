@@ -18,8 +18,8 @@
     <h1 class="h3 my-2 font-weight-normal text-light">Бронирование стола {{ table.pk }} {{ table.short_description }}</h1>
     <form class="form-account" method="post">
         {% csrf_token %}
-        <input name="table" id="id_table" value="{{ table.pk }}" style="display: none">
-        <input name="account" id="id_account" value="{{ request.user.pk }}" style="display: none">
+        <input name="table" id="id_table" value="{{ table.pk }}" hidden>
+        <input name="account" id="id_account" value="{{ request.user.pk }}" hidden>
         {% for field in form.visible_fields %}
             <label class="text-light mb-0">{{ field.label }}</label>
             {{ field }}
@@ -27,8 +27,18 @@
             {% if field.help_text %}
                 <small>{{ field.help_text }}</small>
             {% endif %}
+
+            {% for error in field.errors %}
+                <p class="error">{{ error }}</p>
+            {% endfor %}
         {% endfor %}
-        <button class="btn btn-lg btn-secondary btn-block" type="submit">Забронировать</button>
+
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <p class="error">{{ error }}</p>
+            {% endfor %}
+        {% endif %}
+        <button class="btn btn-lg btn-secondary btn-block mt-5" type="submit">Забронировать</button>
     </form>
 {% endblock %}
 

@@ -107,7 +107,7 @@ class BookingForm(forms.ModelForm):
         # --------------  field for datetime of booking end   ------------------------------
         attributes = {
             'autocomplete': 'off',
-            'class': 'dt_end form-control mb-5',
+            'class': 'dt_end form-control mb-3',
             'readonly': None,
         }
 

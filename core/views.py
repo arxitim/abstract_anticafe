@@ -42,12 +42,14 @@ class BookingView(FormView):
             form.save()
             return redirect('homePage')
         else:
+            table = Table.objects.get(pk=kwargs['table_id'])
+            context['table'] = table
             context['form'] = form
             return render(request, self.template_name, context)
 
     def get(self, request, *args, **kwargs):
         context = {}
-        table = Table.objects.get(pk=request.resolver_match.kwargs['table_id'])
+        table = Table.objects.get(pk=kwargs['table_id'])
         form = BookingForm(custom_values={'max_capacity': table.capacity})
         context['form'] = form
         context['table'] = table
