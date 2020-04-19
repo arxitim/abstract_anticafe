@@ -22,10 +22,8 @@
     <div class="row">
         {% for table_id in tables %}
             <div class="col-xs-12 col-md-4 col-lg-3">
-                <a href="tables/{{ table_id }}" class="table">
-                    <div class="block">
-                        <img class='mini_table desktop' src="{% get_static_prefix %}core/img/tables/table_{{ table_id }}/table_{{ table_id }}-min.jpg">
-                    </div>
+                <a href="tables/{{ table_id }}" class="mini_table__block">
+                    <img class='mini_table__img desktop' src="{% get_static_prefix %}core/img/tables/table_{{ table_id }}/table_{{ table_id }}-min.jpg">
                 </a>
             </div>
         {% endfor %}

@@ -15,7 +15,7 @@
 {% endblock %}
 
 {% block content %}
-    <h1 class="h3 my-2 font-weight-normal text-light">Бронирование стола {{ table.pk }} {{ table.short_description }}</h1>
+    <h1 class="h3 my-2 font-weight-normal text-light">{{ table.short_description }} booking</h1>
     <form class="form-account" method="post">
         {% csrf_token %}
         <input name="table" id="id_table" value="{{ table.pk }}" hidden>

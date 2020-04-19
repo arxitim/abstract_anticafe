@@ -14,73 +14,41 @@ header {
     flex-grow: 1;
 }
 
-.table {
-    text-decoration: none;
-}
-
-.table_img {
-    height: auto;
+/* Блоки на главной странице  */
+.mini_table__block {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 10px;
+    margin-bottom: 8px;
 }
 
-.table_details {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
-.block {
-    margin-bottom:8px;
-    user-select: none;
-}
-
-/*Мобильные усройства*/
-@media screen and (max-width:767px) {
-    .table_img, .table_details {
-        max-width: 90%;
-    }
+.mini_table__img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
 }
 
 /*Планшеты*/
 @media screen and (min-width:768px) and (max-width:991px) {
-     .block {
+     .mini_table__block {
         height: 240px;
         margin-top: 8px;
     }
-    
-    .table_img, .table_details {
-        max-width: 80%;
-    }
-    
 }
 
 /*Маленькие мониторы*/
 @media screen and (min-width:992px) and (max-width:1199px) {
-     .block {
+     .mini_table__block {
         height: 200px;
         margin-top: 8px;
     }
-    
-    .table_img, .table_details {
-        max-width: 80%;
-    }
-    
 }
 
 /*Большие мониторы*/
 @media screen and (min-width:1200px){
-     .block {
+     .mini_table__block {
         height: 200px;
         margin-top: 8px;
     }
-        
-    .table_img, .table_details {
-        max-width: 70%;
-    }
-    
+
     .desktop {
         -webkit-filter: grayscale(100%);
         -moz-filter: grayscale(100%);
@@ -104,12 +72,52 @@ header {
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
     }
 }
+/* -------------------------- */
 
-.mini_table {
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
+/* Страница с детальной инфой о столе */
+.table_img {
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
 }
+
+.table_details {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*Мобильные усройства*/
+@media screen and (max-width:767px) {
+    .table_img, .table_details {
+        max-width: 90%;
+    }
+}
+
+/*Планшеты*/
+@media screen and (min-width:768px) and (max-width:991px) {
+    .table_img, .table_details {
+        max-width: 80%;
+    }
+    
+}
+
+/*Маленькие мониторы*/
+@media screen and (min-width:992px) and (max-width:1199px) {
+    .table_img, .table_details {
+        max-width: 80%;
+    }
+    
+}
+
+/*Большие мониторы*/
+@media screen and (min-width:1200px){
+    .table_img, .table_details {
+        max-width: 70%;
+    }
+}
+/* ----------------------------------- */
 
 /* Страница забронированных столов */
 /*Мобильные усройства*/
