@@ -115,6 +115,7 @@ class LoginFormView(FormView):
 
 
 class LogoutView(View):
+    # TODO: косяк при logout после смены пароля
     def get(self, request, *args, **kwargs):
         logout(request)
         next_url = request.GET.get('next')

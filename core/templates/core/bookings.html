@@ -36,8 +36,8 @@
         </table>
     </div>
 
-    <div class="mt-5 mr-5 text-right">
-         <a class="text-light" href="{% url 'account' %}">Account details</a>
+    <div class="mt-5 mb-3 mr-4 text-right">
+        <a class="text-light" href="{% url 'account' %}">Account details</a>
     </div>
 
 <!--Модальное окно с qr-кодом-->
@@ -57,5 +57,5 @@
 {% block scripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="{% static 'core/js/qr/qrcode.min.js' %}"></script>
-    <script src="{% static 'core/js/testing.js' %}"></script>
+    <script src="{% static 'core/js/main.js' %}"></script>
 {% endblock %}
