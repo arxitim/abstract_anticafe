@@ -187,7 +187,7 @@ class PageNotFound(View):
     """
     Responsible for the logic of forming the page to which the user gets the wrong url link.
     """
-    template_name = 'core/not_found.html'
+    template_name = 'not_found.html'
 
     def get(self, request):
         return render(request, self.template_name, context={})
