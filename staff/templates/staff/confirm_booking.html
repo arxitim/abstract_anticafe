@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Подтверждение брони
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/index.css' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'core/img/favicon.ico' %}">
+{% endblock %}
+
+{% block header %}
+    {% include "header.html" %}
+{% endblock %}
+
+{% block content %}
+    {% if status %}
+        <img class="my-3 mx-auto d-block img-fluid" src="{% static 'staff/img/success.png' %}">
+        <p class="mt-5 text-center text-light">Бронирование #{{ booking.pk }} для {{ booking.account.username }} подтверждено</p>
+    {% endif %}
+{% endblock %}
+
+{% block footer %}
+    {% include "footer.html" %}
+{% endblock %}

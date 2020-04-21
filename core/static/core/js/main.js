@@ -24,7 +24,7 @@ function openModal(pk) {
 
     $('#qrcode').empty();
     var qrcode = new QRCode(document.getElementById('qrcode'), {
-	text: 'http://127.0.0.1/' + pk,
+	text: window.location.host + '/staff/' +  pk,
 	colorDark : "#000000",
 	colorLight : "#ffffff",
     });
