@@ -12,6 +12,7 @@ header {
 
 .content {
     flex-grow: 1;
+    position: relative;
 }
 
 /* Блоки на главной странице  */
@@ -147,6 +148,12 @@ tr:nth-child(even) {
 
 tbody tr:hover {
     background-color: #2e2e2e !important;
+}
+
+.account_details {
+    position: absolute;
+    bottom: 4vh;
+    right: 5vh;
 }
 
 .qrModal {
