@@ -4,3 +4,4 @@
 /.idea/
 /celerybeat-schedule
 /celerybeat.pid
+/abstract_anticafe/settings.py
