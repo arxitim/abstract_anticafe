@@ -22,14 +22,16 @@
                     <th scope="col">Table</th>
                     <th scope="col">Dt start</th>
                     <th scope="col">Dt end</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 {% for booking in bookings %}
                     <tr onclick="openModal({{ booking.pk }})">
-                        <td>{{ booking.table.short_description }}</td>
-                        <td>{{ booking.dt_start|date:'d.m, H:i' }}</td>
-                        <td>{{ booking.dt_end|date:'d.m, H:i' }}</td>
+                        <td class="bookings__short_description">{{ booking.table.short_description }}</td>
+                        <td class="bookings__datetime">{{ booking.dt_start|date:'H:i, d.m' }}</td>
+                        <td class="bookings__datetime">{{ booking.dt_end|date:'H:i, d.m' }}</td>
+                        <td class="bookings__delete">X</td>
                     </tr>
                 {% endfor %}
             </tbody>

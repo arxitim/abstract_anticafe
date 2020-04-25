@@ -135,6 +135,7 @@ header {
     min-width: 40vw;
     max-width: 60vw;
     margin-top: 8vh;
+    margin-bottom: 14vh;
     }
 }
 
@@ -144,6 +145,14 @@ tr {
 
 tr:nth-child(even) {
     background-color: #494949;
+}
+
+bookings__datetime {
+    min-width: 6vw;
+}
+
+.bookings__delete {
+    width: 2rem;
 }
 
 tbody tr:hover {
