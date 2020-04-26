@@ -178,6 +178,7 @@ tbody tr:hover {
     opacity: 0;
     z-index: 38;
     text-align: center;
+    box-shadow: 0 0 8px rgba(232,232,232,0.5);
 }
 
 #qrcode img {
@@ -201,6 +202,34 @@ tbody tr:hover {
     width: 100%; height: 100%;
     top: 0; left: 0;
     cursor: pointer;
+    display: none;
+}
+
+.swal-title, .swal-text {
+    color: aliceblue;
+}
+
+.swal-overlay {
+    background-color: rgba(0,0,0,.7);
+}
+
+.swal-modal {
+    animation: none !important;
+    background-color: #141414;
+    font-color: aliceblue;
+    box-shadow: 0 0 8px rgba(232,232,232,0.5);
+}
+
+.swal-icon::before,
+.swal-icon::after {
+    background-color: #141414;
+}
+
+.swal-icon--success__ring {
+    border: 4px solid #a5dc86 !important;
+}
+
+.swal-icon--success__hide-corners {
     display: none;
 }
 

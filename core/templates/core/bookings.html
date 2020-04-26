@@ -27,11 +27,11 @@
             </thead>
             <tbody>
                 {% for booking in bookings %}
-                    <tr onclick="openModal({{ booking.pk }})">
+                    <tr id="{{ booking.pk }}" onclick="openModalQR({{ booking.pk }})">
                         <td class="bookings__short_description">{{ booking.table.short_description }}</td>
                         <td class="bookings__datetime">{{ booking.dt_start|date:'H:i, d.m' }}</td>
                         <td class="bookings__datetime">{{ booking.dt_end|date:'H:i, d.m' }}</td>
-                        <td class="bookings__delete">X</td>
+                        <td class="bookings__delete" onclick="deleteBooking(event, {{ booking.pk }})">X</td>
                     </tr>
                 {% endfor %}
             </tbody>
@@ -58,6 +58,7 @@
 
 {% block scripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="{% static 'core/js/qr/qrcode.min.js' %}"></script>
     <script src="{% static 'core/js/main.js' %}"></script>
 {% endblock %}

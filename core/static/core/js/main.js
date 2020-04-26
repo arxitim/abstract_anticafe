@@ -19,7 +19,7 @@ $('.apireq').click(function() {
     });
 });
 
-function openModal(pk) {
+function openModalQR(pk) {
     event.preventDefault();
 
     $('#qrcode').empty();
@@ -38,9 +38,27 @@ function openModal(pk) {
     });
 };
 
+function deleteBooking(event, pk) {
+    event.stopPropagation();
+    swal({
+            title: "Are you sure?",
+            text: "You will delete this booking!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                swal("Poof! Your booking has been deleted!", {
+                    icon: "success",
+                });
+            }
+        });
+};
+
 $('.qrModal__close, .overlay').click(function() {
     $('.qrModal').animate({
-            opacity: 0
+            opacity: 0.5
         }, 70,
         function() {
             $(this).css('display', 'none');
