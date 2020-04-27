@@ -209,7 +209,6 @@ tbody tr:hover {
 .swal-modal {
     animation: none !important;
     background-color: #141414;
-    font-color: aliceblue;
     box-shadow: 0 0 8px rgba(232,232,232,0.5);
 }
 

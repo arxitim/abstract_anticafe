@@ -15,6 +15,7 @@
 {% endblock %}
 
 {% block content %}
+    {% csrf_token %}
     <div class="mx-auto bookings">
         <table class="table text-light">
             <thead>

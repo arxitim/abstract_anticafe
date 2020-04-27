@@ -1,4 +1,3 @@
-from django.utils import timezone
 from django.shortcuts import redirect
 from django.http import JsonResponse
 
@@ -19,15 +18,18 @@ class GetAccountInfo(APIView):
         return Response(serialized.data)
 
 
-class BookingNow(APIView):
-    def post(self, request, table_id):
+class DeleteBooking(APIView):
+    def get(self, request, booking_id):
+        return redirect('homePage')
+
+    def delete(self, request, booking_id):
         if not request.user.is_authenticated:
             return redirect('login')
 
-        table = Table.objects.all().get(pk=table_id)
-        account = Account.objects.all().get(email=request.user.email)
-        new_booking = TableBookingQueue.objects.create(table=table, account=account,
-                                                       guests_count=3, dt_start=timezone.now(),
-                                                       dt_end=timezone.now())
-        return JsonResponse({"status": True})
+        try:
+            booking = TableBookingQueue.objects.filter(pk=booking_id, account=request.user)[0]
+            booking.delete()
+        except IndexError:
+            return JsonResponse({'status': False})
 
+        return JsonResponse({'status': True})
