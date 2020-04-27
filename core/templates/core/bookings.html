@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-    Мой аккаунт
+    Bookings
 {% endblock %}
 
 {% block styles %}
@@ -45,15 +45,15 @@
         <a class="text-light" href="{% url 'account' %}">Account details</a>
     </div>
 
-<!--Модальное окно с qr-кодом-->
+<!-- Modal window with qr-code -->
     <div class="qrModal">
-        <p>Покажите бармену</p>
+        <p>Show the employee</p>
         <span class="close qrModal__close">&times;</span>
         <div id="qrcode"></div>
     </div>
 <!------------------------------>
 
-<!--Затемняющий слой-->
+<!-- dark overlay for qr-->
 <div class="overlay"></div>
 <!------------------->
 {% endblock %}

@@ -88,7 +88,7 @@ class BookingForm(forms.ModelForm):
         self.fields['guests_count'] = forms.IntegerField(min_value=1,
                                                          max_value=custom_values.get('max_capacity', MAX_CAPACITY),
                                                          widget=forms.NumberInput(attrs=attributes))
-        self.fields['guests_count'].label = 'Кол-во гостей'
+        self.fields['guests_count'].label = 'Number of guests'
         # ----------------------------------------------------------------------------------
 
         # --------------  field for datetime of booking start ------------------------------
@@ -100,7 +100,7 @@ class BookingForm(forms.ModelForm):
 
         self.fields['dt_start'] = forms.DateTimeField(input_formats=['%d/%m/%Y %H:%M'],
                                                       widget=forms.TextInput(attrs=attributes))
-        self.fields['dt_start'].label = 'Дата и время начала посещения'
+        self.fields['dt_start'].label = 'Booking start date and time'
         # ----------------------------------------------------------------------------------
 
         # --------------  field for datetime of booking end   ------------------------------
@@ -112,7 +112,7 @@ class BookingForm(forms.ModelForm):
 
         self.fields['dt_end'] = forms.DateTimeField(input_formats=['%d/%m/%Y %H:%M'],
                                                     widget=forms.TextInput(attrs=attributes))
-        self.fields['dt_end'].label = 'Дата и время конца посещения'
+        self.fields['dt_end'].label = 'Booking end date and time'
         # ----------------------------------------------------------------------------------
 
     def clean(self):
@@ -126,7 +126,8 @@ class BookingForm(forms.ModelForm):
         dt_end = cleaned_data.get('dt_end')
 
         if dt_start >= dt_end:
-            self.start_end_excetion(msg='Дата и время начала брони должны быть меньше даты и времени конца')
+            self.start_end_excetion(msg='The start date and time of the reservation\
+                                         must be less than the end date and time.')
             return
 
         booking_datetime_range = DateTimeRange(dt_start, dt_end)
@@ -138,5 +139,5 @@ class BookingForm(forms.ModelForm):
             busy_table_datetime_range = DateTimeRange(busy_table.dt_start, busy_table.dt_end)
 
             if booking_datetime_range.is_intersection(busy_table_datetime_range):
-                self.start_end_excetion(msg='О-о, в данном диапазоне уже занято :3')
+                self.start_end_excetion(msg='This range is already booked :3')
                 break

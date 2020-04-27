@@ -15,7 +15,7 @@ header {
     position: relative;
 }
 
-/* Блоки на главной странице  */
+/* mini blocks on the homepage  */
 .mini_table__block {
     display: block;
     margin-bottom: 8px;
@@ -27,7 +27,7 @@ header {
     border-radius: 5px;
 }
 
-/*Планшеты*/
+/* Tablets */
 @media screen and (min-width:768px) and (max-width:991px) {
      .mini_table__block {
         height: 240px;
@@ -35,7 +35,7 @@ header {
     }
 }
 
-/*Маленькие мониторы*/
+/* Small monitors */
 @media screen and (min-width:992px) and (max-width:1199px) {
      .mini_table__block {
         height: 200px;
@@ -43,7 +43,7 @@ header {
     }
 }
 
-/*Большие мониторы*/
+/* big monitors */
 @media screen and (min-width:1200px){
      .mini_table__block {
         height: 200px;
@@ -75,7 +75,7 @@ header {
 }
 /* -------------------------- */
 
-/* Страница с детальной инфой о столе */
+/* Detailed information about the table */
 .table_img {
     height: auto;
     display: block;
@@ -89,14 +89,14 @@ header {
     margin-right: auto;
 }
 
-/*Мобильные усройства*/
+/* Mobiles */
 @media screen and (max-width:767px) {
     .table_img, .table_details {
         max-width: 90%;
     }
 }
 
-/*Планшеты*/
+/* Tablets */
 @media screen and (min-width:768px) and (max-width:991px) {
     .table_img, .table_details {
         max-width: 80%;
@@ -104,7 +104,7 @@ header {
     
 }
 
-/*Маленькие мониторы*/
+/* small monitors */
 @media screen and (min-width:992px) and (max-width:1199px) {
     .table_img, .table_details {
         max-width: 80%;
@@ -112,7 +112,7 @@ header {
     
 }
 
-/*Большие мониторы*/
+/* big monitors */
 @media screen and (min-width:1200px){
     .table_img, .table_details {
         max-width: 70%;
@@ -120,8 +120,8 @@ header {
 }
 /* ----------------------------------- */
 
-/* Страница забронированных столов */
-/*Мобильные усройства*/
+/* Booked Tables */
+/* Mobiles */
 @media screen and (max-width:767px) {
     .bookings {
         min-width: 100vw;
@@ -129,7 +129,7 @@ header {
     }
 }
 
-/*Прочие мониторы*/
+/* Other monitors */
 @media screen and (min-width:768px){
     .bookings {
     min-width: 40vw;

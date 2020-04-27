@@ -32,6 +32,8 @@ $(function() {
         minDate: min_datetime_booking,
     }));
 
+    // you've never seen shit like this before.
+    // TODO: rewrite from zero, but next time better.
     $('.dt_end').click(function() {
         var raw_datetime_start_booking = $('#id_dt_start').val().split(" ");
         var raw_date = raw_datetime_start_booking[0].split("/");

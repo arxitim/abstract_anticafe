@@ -8,7 +8,7 @@ $(".apireq").click(function() {
      * to find out more about your account
      */
     $.ajax({
-        url: "http://127.0.0.1:8000/api/account_info/",
+        url: "http://192.168.0.14:8000/api/account_info/",
         dataType: "json",
         success: function(data) {
             $("#id").text(data.id);
