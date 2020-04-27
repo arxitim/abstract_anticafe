@@ -40,20 +40,28 @@ function openModalQR(pk) {
 
 function deleteBooking(event, pk) {
     event.stopPropagation();
-    swal({
+    var deleteModal = swal({
             title: "Are you sure?",
             text: "You will delete this booking!",
             icon: "warning",
             buttons: true,
             dangerMode: true,
-        })
-        .then((willDelete) => {
-            if (willDelete) {
-                swal("Poof! Your booking has been deleted!", {
-                    icon: "success",
-                });
-            }
-        });
+    })
+
+    //  Crutch to remove a fucking line the size of a pixel when closing the modal
+    $('.swal-overlay').removeAttr('tabindex');
+    //
+
+    deleteModal.then((willDelete) => {
+        if (willDelete) {
+            swal("Poof! Your booking has been deleted!", {
+                icon: "success",
+                button: {
+                    className: "btn-secondary swal-button btn-md"
+                },
+            });
+        }
+    });
 };
 
 $('.qrModal__close, .overlay').click(function() {

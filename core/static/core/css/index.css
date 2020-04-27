@@ -147,14 +147,6 @@ tr:nth-child(even) {
     background-color: #494949;
 }
 
-bookings__datetime {
-    min-width: 6vw;
-}
-
-.bookings__delete {
-    width: 2rem;
-}
-
 tbody tr:hover {
     background-color: #2e2e2e !important;
 }
@@ -174,11 +166,12 @@ tbody tr:hover {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
     margin: auto;
-    display: none;
     opacity: 0;
-    z-index: 38;
+    z-index: 100;
     text-align: center;
+    transition: transform .3s,opacity .2s,-webkit-transform .3s;
     box-shadow: 0 0 8px rgba(232,232,232,0.5);
+    display: none;
 }
 
 #qrcode img {
@@ -189,7 +182,7 @@ tbody tr:hover {
 .qrModal__close {
     width: 21px; height: 21px;
     position: absolute;
-    top: 1px;   right: 11px;
+    top: 7px; right: 11px;
     cursor: pointer;
     display: block;
     font-size: 29px;
@@ -231,6 +224,10 @@ tbody tr:hover {
 
 .swal-icon--success__hide-corners {
     display: none;
+}
+
+.swal-button.btn-secondary:hover {
+  background-color: #3f3f3f;
 }
 
 /* ---------------------------------------------- */

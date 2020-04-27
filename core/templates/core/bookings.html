@@ -31,7 +31,9 @@
                         <td class="bookings__short_description">{{ booking.table.short_description }}</td>
                         <td class="bookings__datetime">{{ booking.dt_start|date:'H:i, d.m' }}</td>
                         <td class="bookings__datetime">{{ booking.dt_end|date:'H:i, d.m' }}</td>
-                        <td class="bookings__delete" onclick="deleteBooking(event, {{ booking.pk }})">X</td>
+                        <td class="bookings__delete" onclick="deleteBooking(event, {{ booking.pk }})">
+                            <span class="close text-light">&times;</span>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
@@ -45,11 +47,14 @@
 <!--Модальное окно с qr-кодом-->
     <div class="qrModal">
         <p>Покажите бармену</p>
-        <span class="close qrModal__close">ₓ</span>
+        <span class="close qrModal__close">&times;</span>
         <div id="qrcode"></div>
     </div>
-    <div class="overlay"></div>
 <!------------------------------>
+
+<!--Затемняющий слой-->
+<div class="overlay"></div>
+<!------------------->
 {% endblock %}
 
 {% block footer %}
