@@ -4,6 +4,8 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
 
+from datetime import datetime
+
 from core.models import Account, TableBookingQueue
 
 
@@ -130,11 +132,14 @@ class BookingForm(forms.ModelForm):
                                          must be less than the end date and time.')
             return
 
+        if dt_start < datetime.now():
+            self.start_end_excetion(msg='The start time cannot be less than the current time.')
+            return
+
         booking_datetime_range = DateTimeRange(dt_start, dt_end)
 
-        # TODO: refactor (we don't need ALL values)
         reservations = TableBookingQueue.objects.filter(table=cleaned_data.get('table'))
-        #
+
         for busy_table in reservations:
             busy_table_datetime_range = DateTimeRange(busy_table.dt_start, busy_table.dt_end)
 

@@ -285,6 +285,11 @@ tbody tr:hover {
     transform-origin:0 0;
 }
 
+.xdsoft_datetimepicker {
+    transform:scale(0.94);
+    transform-origin:0 0;
+}
+
 .h3 {
     text-align: center;
 }
