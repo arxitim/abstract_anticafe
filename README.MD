@@ -19,7 +19,7 @@ This application contains most of the server logic. Main page rendering: home pa
 ![home page mobile](https://github.com/arxitim/abstract_anticafe/blob/master/documentation/screenshots/homePageMobile.png)
 
 ### Page for booking
-![booking page](https://github.com/arxitim/abstract_anticafe/blob/master/documentation/screenshots/Booking.png)
+![booking page](https://github.com/arxitim/abstract_anticafe/blob/master/documentation/screenshots/booking.png)
 
 ### Registration with recaptcha (yeah, I know how to recaptcha, yo)
 ![registration](https://github.com/arxitim/abstract_anticafe/blob/master/documentation/screenshots/register.png)
@@ -28,7 +28,7 @@ This application contains most of the server logic. Main page rendering: home pa
 ![bookings](https://github.com/arxitim/abstract_anticafe/blob/master/documentation/screenshots/bookings.png)
 
 #### Successful deleting
-![succesfull deleting](https://github.com/arxitim/abstract_anticafe/blob/master/documentation/screenshots/SuccesfullDeleting.png)
+![succesfull deleting](https://github.com/arxitim/abstract_anticafe/blob/master/documentation/screenshots/succesfullDeleting.png)
 
 ***
 ## _Staff_ app
