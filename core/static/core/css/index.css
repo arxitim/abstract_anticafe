@@ -302,11 +302,11 @@ tbody tr:hover {
 }
 
 .error {
-    color: red;
+    color: #ff6781;
 }
 
 .success {
-    color: green;
+    color: #a5dc86;
     text-align: center;
 }
 
