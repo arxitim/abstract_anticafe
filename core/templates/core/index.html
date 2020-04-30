@@ -20,10 +20,14 @@
 <!--https://evgenyrodionov.github.io/flexboxgrid2/-->
 <div class="container">
     <div class="row">
-        {% for table_id in tables %}
+        {% for table in tables %}
             <div class="col-xs-12 col-md-4 col-lg-3">
-                <a href="tables/{{ table_id }}" class="mini_table__block">
-                    <img class='mini_table__img desktop' src="{% get_static_prefix %}core/img/tables/table_{{ table_id }}/table_{{ table_id }}-min.jpg">
+                <a href="tables/{{ table.pk }}" class="mini_table__block">
+                    <img class='mini_table__img {% if table.is_busy %}busy{% endif %}'
+                         src="{% get_static_prefix %}core/img/tables/table_{{ table.pk }}/table_{{ table.pk }}-min.jpg">
+                    {% if table.is_busy %}
+                        <div class="font-weight-bold text-light busy">Busy</div>
+                    {% endif %}
                 </a>
             </div>
         {% endfor %}

@@ -14,7 +14,7 @@ class HomePage(View):
     template_name = 'core/index.html'
 
     def get(self, request):
-        tables = Table.objects.values_list('pk', flat=True)
+        tables = Table.objects.all()
         return render(request, self.template_name, context={'tables': tables})
 
 
