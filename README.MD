@@ -12,33 +12,40 @@ You can also delete your bookings)
 ***
 ## _Core_ app
 This application contains most of the server logic. Main page rendering: home page, registration page, login page, detailed information about the table, table order page, page with a list of all bookings and ect. 
-### Main Page
-![home page](https://github.com/arxitim/abstract_anticafe/blob/master/documentation/screenshots/homePage.png)
 
-### Main Page (Mobile)
-![home page mobile](https://github.com/arxitim/abstract_anticafe/blob/master/documentation/screenshots/homePageMobile.png)
+<details><summary><b>Main Page</b></summary>
+  <img src="https://github.com/arxitim/abstract_anticafe/blob/master/documentation/screenshots/homePage.png">
+</details>
 
-### Page for booking
-![booking page](https://github.com/arxitim/abstract_anticafe/blob/master/documentation/screenshots/booking.png)
+<details><summary><b>Main Page (Mobile)</b></summary>
+  <img src="https://github.com/arxitim/abstract_anticafe/blob/master/documentation/screenshots/homePageMobile.png">
+</details>
 
-### Registration with recaptcha (yeah, I know how to recaptcha, yo)
-![registration](https://github.com/arxitim/abstract_anticafe/blob/master/documentation/screenshots/register.png)
+<details><summary><b>Page for booking</b></summary>
+  <img src="https://github.com/arxitim/abstract_anticafe/blob/master/documentation/screenshots/booking.png">
+</details>
 
-### Page with bookings
-![bookings](https://github.com/arxitim/abstract_anticafe/blob/master/documentation/screenshots/bookings.png)
+<details><summary><b>Registration with recaptcha (yeah, I know how to recaptcha, yo)</b></summary>  <img src="https://github.com/arxitim/abstract_anticafe/blob/master/documentation/screenshots/register.png">
+</details>
 
-#### Successful deleting
-![succesfull deleting](https://github.com/arxitim/abstract_anticafe/blob/master/documentation/screenshots/succesfullDeleting.png)
+<details><summary><b>Page with bookings</b></summary> <img src="https://github.com/arxitim/abstract_anticafe/blob/master/documentation/screenshots/bookings.png">
+</details>
+
+<details><summary><b>Successful deleting</b></summary>
+  <img src="https://github.com/arxitim/abstract_anticafe/blob/master/documentation/screenshots/succesfullDeleting.png">
+</details>
 
 ***
 ## _Staff_ app
 He comes to the place, shows qr-code to the employee with the rights **is_staff**, he follows the link in qr and the reservation is considered confirmed, and the table occupied **is_busy** = True.
 
-### Сlient Qr-code
-![clientQR](https://github.com/arxitim/abstract_anticafe/blob/master/documentation/screenshots/clientQR.png)
+<details><summary><b>Сlient Qr-code</b></summary>
+  <img src="https://github.com/arxitim/abstract_anticafe/blob/master/documentation/screenshots/clientQR.png">
+</details>
 
-### What happens if an employee clicks on the link
-![confirm_booking](https://github.com/arxitim/abstract_anticafe/blob/master/documentation/screenshots/employeeConfirmed.png)
+<details><summary><b>What happens if an employee clicks on the link</b></summary>
+  <img src="https://github.com/arxitim/abstract_anticafe/blob/master/documentation/screenshots/employeeConfirmed.png">
+</details>
 
 ***
 
