@@ -19,6 +19,9 @@ class HomePage(View):
 
 
 class TableView(View):
+    """
+    Responsible for the render of page with table information
+    """
     template_name = 'core/table.html'
 
     def get(self, request, table_id):
@@ -32,6 +35,9 @@ class TableView(View):
 
 
 class BookingView(FormView):
+    """
+    Responsible for internal logic of page with booking form
+    """
     template_name = 'core/table_booking.html'
 
     def post(self, request, *args, **kwargs):
@@ -84,6 +90,9 @@ class RegisterFormView(FormView):
 
 
 class LoginFormView(FormView):
+    """
+    Responsible for the login (Captain ochevidnost')
+    """
     template_name = 'registration/login.html'
 
     def post(self, request, *args, **kwargs):
@@ -115,14 +124,21 @@ class LoginFormView(FormView):
 
 
 class LogoutView(View):
-    # TODO: косяк при logout после смены пароля
     def get(self, request, *args, **kwargs):
         logout(request)
         next_url = request.GET.get('next')
-        return redirect(next_url)
+
+        # If the next parameter has keywords, it will redirect to the homePage
+        if filter(lambda x: x in next_url, ['password']):
+            return redirect('homePage')
+        else:
+            return redirect(next_url)
 
 
 class MyBookingsView(View):
+    """
+    Responsible for the render of the page with bookings for account
+    """
     template_name = 'core/bookings.html'
 
     def get(self, request, *args, **kwargs):
