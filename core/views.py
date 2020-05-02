@@ -3,8 +3,17 @@ from django.views import View
 from django.views.generic.edit import FormView
 from django.contrib.auth import login, authenticate, logout
 
-from core.forms import RegistrationForm, AccountUpdateForm, BookingForm, AccountAuthenticationForm
-from core.models import Table, Account, TableBookingQueue
+from core.forms import (
+    RegistrationForm,
+    AccountUpdateForm,
+    BookingForm,
+    AccountAuthenticationForm
+)
+from core.models import (
+    Table,
+    Account,
+    TableBookingQueue
+)
 
 
 class HomePage(View):
@@ -14,7 +23,11 @@ class HomePage(View):
     template_name = 'core/index.html'
 
     def get(self, request):
-        tables = Table.objects.all()
+        tables = Table.objects.values_list(
+            'pk',
+            'is_busy',
+            named=True
+        )
         return render(request, self.template_name, context={'tables': tables})
 
 

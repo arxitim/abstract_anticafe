@@ -4,12 +4,15 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
 
-from datetime import datetime
+from datetime import datetime, timedelta
+from pytz import timezone
 
+from abstract_anticafe.settings import TIME_ZONE
 from core.models import Account, TableBookingQueue
 
 
 MAX_CAPACITY = 8
+MAX_BOOKING_DURATION = 3  # hours
 
 
 class RegistrationForm(UserCreationForm):
@@ -131,9 +134,11 @@ class BookingForm(forms.ModelForm):
             self.start_end_excetion(msg='The start date and time of the reservation\
                                          must be less than the end date and time.')
             return
-
-        if dt_start < datetime.now():
+        elif dt_start < datetime.now(tz=timezone(TIME_ZONE)):
             self.start_end_excetion(msg='The start time cannot be less than the current time.')
+            return
+        elif dt_end - dt_start > timedelta(hours=MAX_BOOKING_DURATION):
+            self.start_end_excetion(msg=f'You can\'t book for more than {MAX_BOOKING_DURATION} hours')
             return
 
         booking_datetime_range = DateTimeRange(dt_start, dt_end)
