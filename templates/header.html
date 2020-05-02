@@ -12,6 +12,8 @@
             {% if request.path not in list %}
                 <a class="btn btn-secondary btn-md mr-2" href="{% url 'register' %}?next={{ request.path }}">Register </a>
                 <a class="btn btn-outline-secondary btn-md" href="{% url 'login' %}?next={{ request.path }}">Login</a>
+            {% else %}
+                <a class="btn btn-md hidden">Absolutely not a crutch</a>
             {% endif %}
 
         {% endif %}

@@ -55,7 +55,7 @@ div.busy {
 /* Tablets */
 @media screen and (min-width:768px) and (max-width:991px) {
      .mini_table__block {
-        height: 240px;
+        height: 200px;
         margin-top: 8px;
     }
 }
@@ -63,7 +63,7 @@ div.busy {
 /* Small monitors */
 @media screen and (min-width:992px) and (max-width:1199px) {
      .mini_table__block {
-        height: 200px;
+        height: 180px;
         margin-top: 8px;
     }
 }
