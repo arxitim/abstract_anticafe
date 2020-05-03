@@ -25,7 +25,10 @@ urlpatterns = [
     path('', HomePage.as_view(), name='homePage'),
     path('admin/', admin.site.urls, name='admin'),
     path('account/', AccountDetails.as_view(), name='account'),
-    path('bookings', MyBookingsView.as_view(), name='bookings'),
+
+    path('bookings/', MyBookingsView.as_view(), name='bookings'),
+    path('bookings/<str:status>', MyBookingsView.as_view(), name='bookings_new'),
+
     path('register/', check_recaptcha(RegisterFormView.as_view()), name='register'),
     path('login/', LoginFormView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),

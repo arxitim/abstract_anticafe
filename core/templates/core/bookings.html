@@ -45,17 +45,22 @@
         <a class="text-light" href="{% url 'account' %}">Account details</a>
     </div>
 
-<!-- Modal window with qr-code -->
-    <div class="qrModal">
-        <p>Show the employee</p>
-        <span class="close qrModal__close">&times;</span>
-        <div id="qrcode"></div>
-    </div>
-<!------------------------------>
+    <!-- Modal window with qr-code -->
+        <div class="qrModal">
+            <p>Show the employee</p>
+            <span class="close qrModal__close">&times;</span>
+            <div id="qrcode"></div>
+        </div>
+    <!------------------------------>
 
-<!-- dark overlay for qr-->
-<div class="overlay"></div>
-<!------------------->
+    <!-- dark overlay for qr-->
+    <div class="overlay"></div>
+    <!------------------->
+
+    {% if new_booking %}
+        <div id="new_booking" hidden></div>
+    {% endif %}
+
 {% endblock %}
 
 {% block footer %}

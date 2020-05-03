@@ -59,7 +59,7 @@ class BookingView(FormView):
 
         if form.is_valid():
             form.save()
-            return redirect('homePage')
+            return redirect('bookings_new', status='success')
         else:
             table = Table.objects.get(pk=kwargs['table_id'])
             context['table'] = table
@@ -160,8 +160,14 @@ class MyBookingsView(View):
         if not request.user.is_authenticated:
             return redirect('login')
 
+        if 'status' in kwargs:
+            if kwargs['status'] == 'success':
+                context['new_booking'] = True
+            else:
+                return redirect('/not_found')  # random url, bcause not_found pattern use 're_path' in urls.py
+
         user = Account.objects.get(pk=request.user.pk)
-        bookings = TableBookingQueue.objects.filter(account=user).order_by('-dt_start')
+        bookings = TableBookingQueue.objects.filter(account=user).order_by('dt_start')
         context['bookings'] = bookings
 
         return render(request, self.template_name, context)

@@ -120,3 +120,15 @@ function deleteBooking(event, pk) {
         }
     });
 };
+
+$(document).ready(function() {
+    if ($("div").is("#new_booking")) {
+        swal("Wow, somebody made a booking!", {
+            icon: "success",
+            timer: 2500,
+            button: {
+                className: "btn-secondary swal-button btn-md"
+            },
+        });
+    }
+});
