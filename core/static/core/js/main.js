@@ -8,7 +8,7 @@ $(".apireq").click(function() {
      * to find out more about your account
      */
     $.ajax({
-        url: "http://192.168.0.14:8000/api/account_info/",
+        url: "/api/account_info/",
         dataType: "json",
         success: function(data) {
             $("#id").text(data.id);
@@ -37,6 +37,16 @@ function openModalQR(pk) {
             }, 110);
     });
 };
+
+$(".qrModal__close, .overlay").click(function() {
+    $(".qrModal").animate({
+            opacity: 0.5
+        }, 70,
+        function() {
+            $(this).css("display", "none");
+            $(".overlay").fadeOut(80);
+        });
+});
 
 function successBookingDelete(pk) {
     $("#" + pk).remove();
@@ -91,7 +101,7 @@ function deleteBooking(event, pk) {
         if (willDelete) {
             $.ajax({
                 type: "DELETE",
-                url: "http://127.0.0.1:8000/api/delete_booking/" + pk,
+                url: "/api/delete_booking/" + pk,  // host will be added automatically
                 dataType: "json",
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader("X-CSRFToken", getCookie("csrftoken"));
@@ -110,13 +120,3 @@ function deleteBooking(event, pk) {
         }
     });
 };
-
-$(".qrModal__close, .overlay").click(function() {
-    $(".qrModal").animate({
-            opacity: 0.5
-        }, 70,
-        function() {
-            $(this).css("display", "none");
-            $(".overlay").fadeOut(80);
-        });
-});
