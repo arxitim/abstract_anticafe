@@ -55,7 +55,7 @@ Small API mainly for working with ajax
 
 ## Redis + Celery
 Used to clear a queue of orders that are no longer relevant.
-Also soon will be added emulation of users who order something on the service. I hope so.
+Also emulates the visit of random people so that the status of the table changes to busy (table.is_busy = True). 
 ***
 
 ## SQL scheme for _Core_
