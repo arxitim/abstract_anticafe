@@ -66,7 +66,7 @@ Also emulates the visit of random people so that the status of the table changes
 ## Deploy
 Deploy is made by *nginx+gunicorn* and <a href="https://certbot.eff.org/">Certbot</a> for HTTPS.
 I was in charge of the configuration of the server myself, and since I don't know much about security issues, it can be dangerous :3
-#### Working site <a href="abstractanticafe.xyz">abstractanticafe.xyz</a>
+#### Working site <a href="https://abstractanticafe.xyz/">abstractanticafe.xyz</a>
 ***
 
 ### Special thanks to <a href="https://github.com/mitchtabian">@mitchtabian</a> for his Youtube lectures about Django.
