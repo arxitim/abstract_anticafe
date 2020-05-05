@@ -35,6 +35,9 @@ This application contains most of the server logic. Main page rendering: home pa
   <img src="https://github.com/arxitim/abstract_anticafe/blob/master/documentation/screenshots/succesfullDeleting.png">
 </details>
 
+## SQL scheme for _Core_
+![core_sql scheme](https://github.com/arxitim/abstract_anticafe/blob/master/documentation/sql_scheme/core_scheme.png)
+
 ***
 ## _Staff_ app
 He comes to the place, shows qr-code to the employee with the rights **is_staff**, he follows the link in qr and the reservation is considered confirmed, and the table occupied **is_busy** = True.
@@ -58,5 +61,13 @@ Used to clear a queue of orders that are no longer relevant.
 Also emulates the visit of random people so that the status of the table changes to busy (table.is_busy = True). 
 ***
 
-## SQL scheme for _Core_
-![core_sql scheme](https://github.com/arxitim/abstract_anticafe/blob/master/documentation/sql_scheme/core_scheme.png)
+
+
+## Deploy
+Deploy is made by *nginx+gunicorn* and <a href="https://certbot.eff.org/">Certbot</a> for HTTPS.
+I was in charge of the configuration of the server myself, and since I don't know much about security issues, it can be dangerous :3
+#### Working site <a href="abstractanticafe.xyz">abstractanticafe.xyz</a>
+***
+
+### Special thanks to <a href="https://github.com/mitchtabian">@mitchtabian</a> for his Youtube lectures about Django.
+***
