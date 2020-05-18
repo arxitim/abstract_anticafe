@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-    Booking Confirmation
+    Add table
 {% endblock %}
 
 {% block styles %}
@@ -15,10 +15,7 @@
 {% endblock %}
 
 {% block content %}
-    {% if status %}
-        <img class="my-3 mx-auto d-block img-fluid" src="{% static 'staff/img/success.png' %}">
-        <p class="mt-5 text-center text-light">Booking #{{ booking.pk }} для {{ booking.account.username }} подтверждено</p>
-    {% endif %}
+    <p>I will add the table</p>
 {% endblock %}
 
 {% block footer %}

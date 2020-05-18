@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from django.views import View
+from django.views.generic.edit import FormView
 from django.contrib.auth import login, authenticate, logout
 
 from core.models import Table, Account, TableBookingQueue
+from staff.decorators import staff_required
 
 
 class ConfirmBooking(View):
@@ -24,3 +26,11 @@ class ConfirmBooking(View):
             return render(request, self.template_name, context)
         else:
             return redirect('login')
+
+
+class AddTable(FormView):
+    template_name = 'staff/add_table.html'
+
+    @staff_required
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name)
