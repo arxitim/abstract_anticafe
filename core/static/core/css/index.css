@@ -246,11 +246,22 @@ tbody tr:hover {
 /* Основные стили для форм */
 
 .form-account {
-  width: 100%;
-  max-width: 320px;
-  padding: 15px;
-  margin: auto;
+    width: 100%;
+    max-width: 320px;
+    padding: 15px;
+    margin: auto;
  }
+
+.form-add_table {
+    width: 100%;
+    max-width: 400px;
+    padding: 15px;
+    margin: auto;
+}
+
+.form-add_table textarea {
+    width: inherit;
+}
 
 .form-account .form-control {
     position: relative;

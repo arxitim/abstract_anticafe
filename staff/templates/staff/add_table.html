@@ -15,7 +15,30 @@
 {% endblock %}
 
 {% block content %}
-    <p>I will add the table</p>
+    <h1 class="h3 my-2 font-weight-normal text-light">Add table</h1>
+    <form class="form-add_table" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <label class="text-light mb-0">{{ field.label }}</label>
+            {{ field }}
+
+            {% if field.help_text %}
+                <small>{{ field.help_text }}</small>
+            {% endif %}
+
+            {% for error in field.errors %}
+                <p class="error">{{ error }}</p>
+            {% endfor %}
+
+        {% endfor %}
+
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <p class="error">{{ error }}</p>
+            {% endfor %}
+        {% endif %}
+        <button class="btn btn-lg btn-secondary btn-block mt-5 mb-3" type="submit">Add table</button>
+    </form>
 {% endblock %}
 
 {% block footer %}
